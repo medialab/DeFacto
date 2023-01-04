@@ -24,9 +24,15 @@ Tools to enrich De Facto's database
     }
 }
 ```
-3. Run the enrichment and output a new JSON to replace that which De Facto's API sent originally.
+
+3. Get and format data from the database in preparation for the enrichment, which is designed to take any database's data when formatted properly.
 ```shell
-$ python src/main.py
+$ python data/format.py
+```
+
+4. Run the enrichment and output a new JSON to replace that which De Facto's API sent originally.
+```shell
+$ python src/main.py data/defacto.json
 ```
 
 # Output

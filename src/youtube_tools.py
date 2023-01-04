@@ -1,78 +1,68 @@
-from fetch import FetchResult
-
-from ural.youtube import parse_youtube_url
-from ural.youtube import YoutubeVideo, YoutubeUser, YoutubeChannel
-from minet.youtube.scrapers import scrape_channel_id, YOUTUBE_SCRAPER_POOL
-from text import update_appearance
-from bs4 import BeautifulSoup
-from minet.web import request
 import json
 import os
+
+from minet.youtube import YouTubeAPIClient
+from minet.youtube.constants import YOUTUBE_API_BASE_URL
+from ural.youtube import (YoutubeChannel, YoutubeUser, YoutubeVideo,
+                          parse_youtube_url)
+from fetch import Result
 
 youtube_cache_filepath = os.path.join("cache", "youtube.json")
 temp_cache_filepath = os.path.join("cache", "temp_youtube.json")
 
-def youtube_enrich(result:FetchResult):
+
+class YouTubeWrapper:
+    def __init__(self, filepath) -> None:
+        with open(filepath, "r", encoding="utf-8") as opened_config:
+            config = json.load(opened_config)["youtube"]
+        self.config = config
+        self.wrapper = YouTubeAPIClient(key=self.config["key"])
+
+
+def youtube_batch_processor(wrapper:YouTubeAPIClient, results:list[Result]):
+    results = [get_ids(result) for result in results]
+
+    print("")
+    [print(result.meta.data) for result in results]
+
+    # call_client(wrapper, results)
+    return results
+
+
+def get_ids(result:Result):
+    print("")
+    print(f"BEFORE: {result.meta.data}")
+    # 1st result -- {}
+    # 2nd result -- {'type': 'YoutubeVideo', 'video_id': 'iBBtuSOEQC0'} <-- BAD
 
     parsed_youtube_url = parse_youtube_url(result.url)
-    if isinstance(parsed_youtube_url, YoutubeUser):
-        result.domain_data.update({"user_id":parsed_youtube_url.id, "user_name":parsed_youtube_url.name})
-
-    elif isinstance(parsed_youtube_url, YoutubeVideo):
-
-        video_id = parsed_youtube_url.id
-
-        result.domain_data.update({"video_id":video_id})
-        url = "https://"+result.url
-        try:
-            channel_id, channel_name, video_title, video_description, video_views, date_published = scrape_video_info(url)
-            result.domain_data.update({
-                "channel_id":channel_id,
-                "channel_name":channel_name,
-                "video_title":video_title,
-                "video_description":video_description,
-                "video_views":video_views,
-                "video_published":date_published
-                })
-        except:
-            result.domain_data.update({"channel_id":None})
-
+    result.meta.data.update({"type":parsed_youtube_url.__class__.__name__})
+    if isinstance(parsed_youtube_url, YoutubeVideo):
+        result.meta.data.update({"video_id":parsed_youtube_url.id})
+    elif isinstance(parsed_youtube_url, YoutubeUser):
+        result.meta.data.update({"user_id":parsed_youtube_url.id, "user_name":parsed_youtube_url.name})
     elif isinstance(parsed_youtube_url, YoutubeChannel):
+        result.meta.data.update({"channel_id":parsed_youtube_url.id, "channel_name":parsed_youtube_url.name})
 
-        channel_id = parsed_youtube_url.id
-
-        if not channel_id:
-            url = "https://"+result.url
-            channel_id = scrape_channel_id(url)
-            result.domain_data.update({"channel_id":channel_id, "channel_name":parsed_youtube_url.name, "video_id":None})                
-
-    result.item = update_appearance(result.item, {"domain-specific": result.domain_data})
-
+    print(f"AFTER: {result.meta.data}")
+    # 1st result -- {'type': 'YoutubeVideo', 'video_id': 'iBBtuSOEQC0'}
+    # 2nd result -- {'type': 'YoutubeVideo', 'video_id': 'bj6PcWBgVN4'}
     return result
 
 
-def scrape_video_info(url):
-    err, response = request(url, pool=YOUTUBE_SCRAPER_POOL)
-    if err:
-        raise err
-    soup = BeautifulSoup(response.data.decode("utf-8"), "lxml")
-    
-    channel_id = xpath(soup, "meta", {"itemprop": "channelId"})
-    
-    channel_name = xpath(soup, "link", {"itemprop": "name"})
-
-    video_title = xpath(soup, "meta", {"itemprop": "name"})
-
-    video_description = xpath(soup, "meta", {"itemprop": "description"})
-
-    views = xpath(soup, "meta", {"itemprop":"interactionCount"})
-
-    date = xpath(soup, "meta", {"itemprop":"datePublished"})
-
-    return channel_id, channel_name, video_title, video_description, views, date
+def call_client(wrapper:YouTubeAPIClient, results:list[Result]):
+    ids = [result.meta.data.get("video_id") for result in results if result.meta.data["type"] == "YoutubeVideo"]
+    video_index = {}
+    [video_index.update({id:data}) for id,data in wrapper.videos(ids)]
+    [update_datafields(result, video_index) for result in results if result.meta.data.get("video_id")]
 
 
-def xpath(soup:BeautifulSoup, tag:str, attribute:dict):
-    tag = soup.find(tag, attribute)
-    if tag:
-        return tag.get("content")
+def update_datafields(result:Result, video_index:dict):
+    id = result.meta.data.get("video_id")
+    payload:YoutubeVideo = video_index.get(id)
+    #print("")
+    #print(payload)
+
+
+
+        
