@@ -35,6 +35,15 @@ $ python data/defacto/format.py
 $ python src/main.py data/defacto.json
 ```
 
+# Method
+```mermaid
+flowchart TD
+input[(data)]-->|URL|fetch([multithreaded fetch])-->
+enhance([enhance])
+
+```
+
+
 # Output
 In the `appearance` for reviewed claims with a valid URL, the following enrichment will be added:
 - YouTube Video

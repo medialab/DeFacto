@@ -1,151 +1,87 @@
 import concurrent.futures
-import json
+import csv
 import os
 import pickle
 
+import casanova
 import click
+from fetch import FETCHRESULTFIELDS, fetch, Result
+from text import multiprocessing_text
+from fs import CSVParams
 from tqdm.auto import tqdm
-from ural.facebook import is_facebook_url
-from ural.telegram import is_telegram_url
-from ural.twitter import is_twitter_url
-from ural.youtube import is_youtube_url
-
-from fetch import Result, fetch_results
-from text import webpage_html_parser
-from tweet_tools import WrapperConfig, tweet_batch_processor
-from youtube_tools import YouTubeWrapper, youtube_batch_processor
-
-# file paths
-cache_dir = "cache"
-output_dir = "output"
-updated_data_json = os.path.join(output_dir, "data.json")
-config_filepath = os.path.join("config.json")
-pickled_results_filepath = os.path.join(cache_dir, "fetchResults.pickle")
-
-
-if not os.path.isdir(cache_dir):
-    os.mkdir(cache_dir)
-if not os.path.isdir(output_dir):
-    os.mkdir(output_dir)
+from minet.cli.utils import LoadingBar
 
 @click.command()
-@click.argument("datafile")
+@click.argument("datafile", type=click.Path(exists=True, file_okay=True, dir_okay=False))
+@click.option("-u", "--url-col", nargs=1, type=str, required=True)
+@click.option("-i", "--id-col", nargs=1, type=str, required=True)
 @click.option("--debug/--no-debug", default=False)
-def main(datafile, debug):
+def main(datafile, debug, url_col, id_col):
 
+    # ------------------------------------------------------- #
+    #                   Verify parameters
+    # ------------------------------------------------------- #
     if not os.path.isfile(datafile):
         raise FileNotFoundError
-
+    CSVParams(file=datafile, id_col=id_col, url_col=url_col)
     click.echo(f"Debug mode is {'on' if debug else 'off'}")
-
-    # ------------------------------------------------------- #
-    # Open formatted data file and fetch URLs
-    with open(datafile, "r") as f:
-        try:
-            data = json.load(f)
-        except:
-            raise Exception("Currently, only JSON files are compatible.")
-
-    if not debug or not os.path.isfile(pickled_results_filepath):
-
-        results:list[Result] = fetch_results(data)
-        results = [result for result in results if result.response and result.response.status == 200]
-
-        if debug:
-            # Pickle filtererd results
-            with open(pickled_results_filepath, "wb") as f:
-                pickle.dump(results, f, protocol=pickle.HIGHEST_PROTOCOL)
-    else:
-        with open(pickled_results_filepath, "rb") as f:
-            results:list[Result] = pickle.load(f)
     # ------------------------------------------------------- #
 
     # ------------------------------------------------------- #
-    # Configure API clients and/or raise key errors in config file
-    twitter_wrapper = WrapperConfig(config_filepath).wrapper
-    youtube_wrapper = YouTubeWrapper(config_filepath).wrapper
+    #               Fetch URLs and parse HTML
+    # ------------------------------------------------------- #
+    # Create the necessary file paths
+    cache_dir = "cache"
+    if not os.path.isdir(cache_dir): os.mkdir(cache_dir)
+    pickled_results = os.path.join(cache_dir, "fetch.pickle")
+    results_csv = os.path.join(cache_dir, "fetch.csv")
+
+    # Open the in- and out-files
+    total = casanova.reader.count(datafile)
+    with open(datafile) as f, open(results_csv, "w", encoding="utf-8") as of:
+        reader = casanova.reader(f)
+        writer = csv.DictWriter(of, fieldnames=FETCHRESULTFIELDS)
+        writer.writeheader()
+
+        url_pos = reader.headers[url_col]
+        id_pos = reader.headers[id_col]
+
+        # If debugging and the fetch results are aleady cached, load the data
+        if debug and os.path.isfile(pickled_results):
+            with open(pickled_results, "rb") as f:
+                fetch_results = pickle.load(f)
+        # Otherwise, use Minet's multithreaded fetch to generate a list of pickle-able Result objects
+        else:
+            fetch_results = [Result(fetch_result, id_pos) for fetch_result in fetch(iterator=reader, key=url_pos, total=total)]
+            with open(pickled_results, "wb") as f:
+                pickle.dump(fetch_results, f, protocol=pickle.HIGHEST_PROTOCOL)
+
+        # Use Python's multiprocessing to decode and parse webpages' fetched HTML
+        loading_bar = LoadingBar(desc="Multiprocessing text", unit="page", total=len(fetch_results))
+        with concurrent.futures.ProcessPoolExecutor() as executor:
+            for result in executor.map(multiprocessing_text, fetch_results):
+                writer.writerow(result)
+                loading_bar.update()
     # ------------------------------------------------------- #
 
     # ------------------------------------------------------- #
-    # Filter results        
-    web_results = []
-    twitter_results = []
-    youtube_results = []
-    facebook_results = []
-
-    platforms = ["facebook.com", "twitter.com", "fb.watch", "youtube.com", "tiktok.com"]
-    for result in results:
-        if is_twitter_url(result.url): twitter_results.append(result)
-        elif is_youtube_url(result.url): youtube_results.append(result)
-        elif is_facebook_url(result.url): facebook_results.append(result)
-        elif not is_telegram_url(result.url) and not any(domain == result.domain for domain in platforms):
-            web_results.append(result)
+    #                   Collect metadata
     # ------------------------------------------------------- #
+    # Create the necessary file paths
+    config_file = os.path.join("config.json")
+    output_dir = "output"
+    outfile = os.path.join(outfile, "enriched_results.csv")
+    if not output_dir: os.mkdir(output_dir)
 
-    # ------------------------------------------------------- #
-    # Multiprocessing text, title, language extraction from HTML
-    with concurrent.futures.ProcessPoolExecutor() as executor:
-        web_results = list(tqdm(executor.map(webpage_html_parser, web_results), total=len(web_results), desc="Multiprocess Webpage HTML"))
-    # ------------------------------------------------------- #
-    
-    # ------------------------------------------------------- #
-    # Batched text and metadata extraction from Twitter API
-    BATCH_SIZE = 20
-    tweet_batches = [twitter_results[x:x+BATCH_SIZE] for x in range(0, len(twitter_results), BATCH_SIZE)]
-
-    batch_processed_twitter_results = []
-    for batch in tqdm(tweet_batches, total=len(tweet_batches), desc="Batch Process Tweets"):
-        batch_processed_twitter_results.extend(tweet_batch_processor(twitter_wrapper, batch))
-
-    twitter_results = batch_processed_twitter_results
-    # ------------------------------------------------------- #
-
-    # ------------------------------------------------------- #
-    #with concurrent.futures.ProcessPoolExecutor() as executor:
-    #    youtube_results = list(tqdm(executor.map(youtube_parsing_manager, youtube_results), total=len(youtube_results), desc="Mulitprocess YouTube URL Parsing"))
-
-    BATCH_SIZE = 20
-    youtube_batches = [youtube_results[x:x+BATCH_SIZE] for x in range(0, len(youtube_results), BATCH_SIZE)]
-    batch_processed_youtube_results = []
-    for batch in tqdm(youtube_batches, total=len(youtube_batches), desc="Batched Multithreaded YouTube"):
-        batch_processed_youtube_results.extend(youtube_batch_processor(youtube_wrapper, batch))
-
-    youtube_results = batch_processed_youtube_results
-
-
-    # Multithreaded parsing of Youtube URLs
-    #with concurrent.futures.ThreadPoolExecutor() as executor:
-    #    youtube_results = list(tqdm(executor.map(youtube_batch_processor, multithreading_args), total=len(youtube_results), desc="Multithreaded YouTube Scraping"))
-    # ------------------------------------------------------- #
-
-
-
-
-
-
-
-
-
-
-
-
-
-    """
-    # ------------------------------------------------------- #
-    # Combine results from different platforms and write to JSON
-    results = web_results+twitter_results+youtube_results+facebook_results
-
-    with open(updated_data_json, "w", encoding="utf-8") as open_json:
-
-        indexed_results = {}
-        [indexed_results.update({result.item["id"]:result.item}) for result in results]
+    # open the in- and out-files
+    with open(results_csv) as f, open(outfile, "w") as of:
+        enricher = casanova.enricher(f, of)
         
-        claims = [indexed_results[claim["id"]] for claim in data["data"] if claim["id"] in indexed_results.keys()]
 
-        data.update({"data":claims})
 
-        json.dump(data, open_json, indent=4, ensure_ascii=False)
-    """
+
+    # ------------------------------------------------------- #
+
 
 if __name__ == '__main__':
     main()
