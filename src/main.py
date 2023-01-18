@@ -70,16 +70,21 @@ def main(datafile, debug, url_col, id_col):
     #                   Collect metadata
     # ------------------------------------------------------- #
     # Create the necessary file paths
-    config_file = os.path.join("config.json")
+    outdir = "output"
+    if not os.path.isdir(outdir): os.mkdir(outdir)
+    of = os.path.join(outdir, "outfile.csv")
 
-    # open the in-file
-    with open(results_csv) as f:
-        reader = casanova.reader(f)
+    with open(results_csv) as f, open(of, "w") as of:
+        reader = casanova.reader(input_file=f)
+        reader_fieldnames = reader.fieldnames
+        writer_fieldnames = reader_fieldnames
+        writer = csv.DictWriter(of, fieldnames=writer_fieldnames)
 
         # In a multithreaded fashion, send each row's URL to the workflow that corresponds to its domain
         loading_bar = LoadingBar(desc="Multithreaded metadata collection", unit="page", total=casanova.reader.count(results_csv))
         with concurrent.futures.ThreadPoolExecutor() as executor:
-            for result in executor.map(collect_metadata, reader, itertools.repeat(reader.fieldnames)):
+            for result in executor.map(collect_metadata, reader, itertools.repeat(reader_fieldnames)):
+                writer.writerow(result)
                 loading_bar.update()
     # ------------------------------------------------------- #
 
