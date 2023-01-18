@@ -56,7 +56,7 @@ def main(datafile, debug, url_col, id_col):
             with open(pickled_results, "wb") as f:
                 pickle.dump(fetch_results, f, protocol=pickle.HIGHEST_PROTOCOL)
 
-        # Use Python's multiprocessing to decode webpages' fetched HTML and parse the main text
+        # Decode online articles' fetched HTML, extract the main text, and flatten all that enriched data to a CSV row
         loading_bar = LoadingBar(desc="Multiprocessing text", unit="page", total=len(fetch_results))
         with concurrent.futures.ProcessPoolExecutor() as executor:
             for result in executor.map(multiprocessing_text, fetch_results):
