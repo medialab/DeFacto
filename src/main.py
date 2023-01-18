@@ -2,6 +2,7 @@ import concurrent.futures
 import csv
 import os
 import pickle
+import itertools
 
 import casanova
 import click
@@ -10,6 +11,7 @@ from text import multiprocessing_text
 from fs import CSVParams
 from tqdm.auto import tqdm
 from minet.cli.utils import LoadingBar
+from metadata_manager import collect_metadata
 
 @click.command()
 @click.argument("datafile", type=click.Path(exists=True, file_okay=True, dir_okay=False))
@@ -69,17 +71,16 @@ def main(datafile, debug, url_col, id_col):
     # ------------------------------------------------------- #
     # Create the necessary file paths
     config_file = os.path.join("config.json")
-    output_dir = "output"
-    outfile = os.path.join(outfile, "enriched_results.csv")
-    if not output_dir: os.mkdir(output_dir)
 
-    # open the in- and out-files
-    with open(results_csv) as f, open(outfile, "w") as of:
-        enricher = casanova.enricher(f, of)
+    # open the in-file
+    with open(results_csv) as f:
+        reader = casanova.reader(f)
 
-
-
-
+        # In a multithreaded fashion, send each row's URL to the workflow that corresponds to its domain
+        loading_bar = LoadingBar(desc="Multithreaded metadata collection", unit="page", total=casanova.reader.count(results_csv))
+        with concurrent.futures.ThreadPoolExecutor() as executor:
+            for result in executor.map(collect_metadata, reader, itertools.repeat(reader.fieldnames)):
+                loading_bar.update()
     # ------------------------------------------------------- #
 
 
