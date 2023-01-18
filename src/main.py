@@ -56,7 +56,7 @@ def main(datafile, debug, url_col, id_col):
             with open(pickled_results, "wb") as f:
                 pickle.dump(fetch_results, f, protocol=pickle.HIGHEST_PROTOCOL)
 
-        # Use Python's multiprocessing to decode and parse webpages' fetched HTML
+        # Use Python's multiprocessing to decode webpages' fetched HTML and parse the main text
         loading_bar = LoadingBar(desc="Multiprocessing text", unit="page", total=len(fetch_results))
         with concurrent.futures.ProcessPoolExecutor() as executor:
             for result in executor.map(multiprocessing_text, fetch_results):
@@ -76,7 +76,7 @@ def main(datafile, debug, url_col, id_col):
     # open the in- and out-files
     with open(results_csv) as f, open(outfile, "w") as of:
         enricher = casanova.enricher(f, of)
-        
+
 
 
 
