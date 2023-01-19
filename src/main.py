@@ -1,31 +1,25 @@
-import concurrent.futures
-import csv
 import os
-import pickle
-import itertools
 
 import casanova
 import click
-from fetch import FETCHRESULTFIELDS, fetch, Result
-from text import multiprocessing_text
-from fs import CSVParams
-from tqdm.auto import tqdm
+from minet import multithreaded_fetch
 from minet.cli.utils import LoadingBar
-from metadata_manager import collect_metadata
+
+from CONSTANTS import CACHE_DIR, FETCH_RESULTS_CSV_HEADERS, RESULTS_CSV
+from fetch import formatted_fetch_result
+
 
 @click.command()
 @click.argument("datafile", type=click.Path(exists=True, file_okay=True, dir_okay=False))
 @click.option("-u", "--url-col", nargs=1, type=str, required=True)
-@click.option("-i", "--id-col", nargs=1, type=str, required=True)
 @click.option("--debug/--no-debug", default=False)
-def main(datafile, debug, url_col, id_col):
+def main(datafile, debug, url_col):
 
     # ------------------------------------------------------- #
     #                   Verify parameters
     # ------------------------------------------------------- #
     if not os.path.isfile(datafile):
         raise FileNotFoundError
-    CSVParams(file=datafile, id_col=id_col, url_col=url_col)
     click.echo(f"Debug mode is {'on' if debug else 'off'}")
     # ------------------------------------------------------- #
 
@@ -33,58 +27,24 @@ def main(datafile, debug, url_col, id_col):
     #               Fetch URLs and parse HTML
     # ------------------------------------------------------- #
     # Create the necessary file paths
-    cache_dir = "cache"
-    if not os.path.isdir(cache_dir): os.mkdir(cache_dir)
-    pickled_results = os.path.join(cache_dir, "fetch.pickle")
-    results_csv = os.path.join(cache_dir, "fetch.csv")
+    if not debug or not os.path.isfile(RESULTS_CSV):
+        if not os.path.isdir(CACHE_DIR): os.mkdir(CACHE_DIR)
 
-    # Open the in- and out-files
-    total = casanova.reader.count(datafile)
-    with open(datafile) as f, open(results_csv, "w", encoding="utf-8") as of:
-        reader = casanova.reader(f)
-        writer = csv.DictWriter(of, fieldnames=FETCHRESULTFIELDS)
-        writer.writeheader()
+        # Open the in- and out-files
+        total = casanova.reader.count(datafile)
+        with open(datafile) as f, open(RESULTS_CSV, "w", encoding="utf-8") as of:
+            enricher = casanova.threadsafe_enricher(f, of, add=FETCH_RESULTS_CSV_HEADERS)
 
-        url_pos = reader.headers[url_col]
-        id_pos = reader.headers[id_col]
+            # Find where in the row the URL is
+            url_pos = enricher.headers[url_col]
 
-        # If debugging and the fetch results are aleady cached, load the data
-        if debug and os.path.isfile(pickled_results):
-            with open(pickled_results, "rb") as f:
-                fetch_results = pickle.load(f)
-        # Otherwise, use Minet's multithreaded fetch to generate a list of pickle-able Result objects
-        else:
-            fetch_results = [Result(fetch_result, id_pos) for fetch_result in fetch(iterator=reader, key=url_pos, total=total)]
-            with open(pickled_results, "wb") as f:
-                pickle.dump(fetch_results, f, protocol=pickle.HIGHEST_PROTOCOL)
+            # Set up a loading bar to keep track of the multithread progress
+            loading_bar = LoadingBar(desc="Multithreaded Fetch", unit="page", total=total)
 
-        # Decode online articles' fetched HTML, extract the main text, and flatten all that enriched data to a CSV row
-        loading_bar = LoadingBar(desc="Multiprocessing text", unit="page", total=len(fetch_results))
-        with concurrent.futures.ProcessPoolExecutor() as executor:
-            for result in executor.map(multiprocessing_text, fetch_results):
-                writer.writerow(result)
-                loading_bar.update()
-    # ------------------------------------------------------- #
-
-    # ------------------------------------------------------- #
-    #                   Collect metadata
-    # ------------------------------------------------------- #
-    # Create the necessary file paths
-    outdir = "output"
-    if not os.path.isdir(outdir): os.mkdir(outdir)
-    of = os.path.join(outdir, "outfile.csv")
-
-    with open(results_csv) as f, open(of, "w") as of:
-        reader = casanova.reader(input_file=f)
-        reader_fieldnames = reader.fieldnames
-        writer_fieldnames = reader_fieldnames
-        writer = csv.DictWriter(of, fieldnames=writer_fieldnames)
-
-        # In a multithreaded fashion, send each row's URL to the workflow that corresponds to its domain
-        loading_bar = LoadingBar(desc="Multithreaded metadata collection", unit="page", total=casanova.reader.count(results_csv))
-        with concurrent.futures.ThreadPoolExecutor() as executor:
-            for result in executor.map(collect_metadata, reader, itertools.repeat(reader_fieldnames)):
-                writer.writerow(result)
+            # Using Minet's mulithreaded fetch, format and decode key details for the CSV
+            for fetch_result in multithreaded_fetch(iterator=enricher, key=lambda x: x[1][url_pos]):
+                index, row, additional_columns = formatted_fetch_result(fetch_result)
+                enricher.writerow(index=index, row=row, add=additional_columns)
                 loading_bar.update()
     # ------------------------------------------------------- #
 

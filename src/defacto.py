@@ -3,7 +3,7 @@ import os
 import sys
 
 import click
-from fs import CSVParams, JSONParams
+from fs import JSONParams
 
 data_dir = os.path.join(".", "data")
 
@@ -37,9 +37,7 @@ def request(config):
 @click.option("-k", "--id-column", required=True, type=str, nargs=1)
 def output(file, url_column, id_column):
 
-    # Verify the parameters
-    params = CSVParams(file, id_col=id_column, url_col=url_column)
-
+    pass
 
 @click.group
 def cli() -> None:

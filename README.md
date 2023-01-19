@@ -1,71 +1,30 @@
 # DeFacto
 Tools to enrich De Facto's database
 
-# How To
-
-1. Clone the repository and install the requirements (`./requirements.txt`) in a virtual environment.
-
-2. Create and configure the JSON (`./config.json`), where the "endpoint" is the URI to De Facto's database.
-```python
-{
-    "endpoint": "XXXXXX",
-    "crowdtangle":{
-        "token": "XXXXXX",
-        "rate_limit": 50
-    },
-    "twitter":{
-        "key": "XXXXXX",
-        "secret_key": "XXXXXX",
-        "token": "XXXXXX-XXXXXX",
-        "secret_token": "XXXXXX"
-    },
-    "youtube":{
-        "key": "XXXXXX"
-    }
-}
-```
-
-3. Get and format data from the database in preparation for the enrichment, which is designed to take any database's data when formatted properly.
+# Step 1
+## Flatten relevant data from De Facto's database into CSV
 ```shell
-$ python data/defacto/format.py
+$ python src/defacto.py request -c config.json
 ```
+In the folder `./data`, writes a CSV (`./data/df_urls.csv`) with columns for De Facto's ID (`id_column`) for each claim and the the claim's URL or None, if not presesnt, (`url_column`).
 
-4. Run the enrichment and output a new JSON to replace that which De Facto's API sent originally.
-```shell
-$ python src/main.py data/defacto.json
+# Step 2
+## Fetch all URLs in list and parse main text from fetched HTML if an article.
 ```
-
-# Method
-```mermaid
-flowchart TD
-input[(data)]-->|URL|fetch([multithreaded fetch])-->
-enhance([enhance])
-
+$ python src/main.py -u url_column data/df_urls.csv
 ```
-
-
-# Output
-In the `appearance` for reviewed claims with a valid URL, the following enrichment will be added:
-- YouTube Video
-```python
-"appearance": {
-                        "url": "https://www.youtube.com/watch?v=iBBtuSOEQC0",
-                        "headline": "",
-                        "domain": "youtube.com",
-                        "domain-specific": {
-                            "video_id": "iBBtuSOEQC0",
-                            "channel_id": "UCjTbZBXEw-gplUAnMXLYHpg",
-                            "channel_name": "Éric Zemmour",
-                            "video_title": "Éric Zemmour : Discours de Villepinte",
-                            "video_description": "Voici en intégralité mon discours à Villepinte !1️⃣ Likez la vidéo, Abonnez-vous à ma chaîne YouTube en cliquant sur le bouton « s'abonner » et sur la cloche...",
-                            "video_views": "360765",
-                            "video_published": "2021-12-06"
-                        }
-                    }
-```
+In the folder `./cache`, writes a CSV (`./cache/fetch_results.csv`) with the original data file's columns as well as the following additional columns if the claim had a URL:
+- `domain` : domain name
+- `fetched_url` : the URL that Minet fetched to collect data
+- `normalized_url` : a normalized version of that URL
+- `fetch_date` : the date and time of the fetch
+- `status` : the status of the webpage
+- `webpage_title` : if the webpage is an online article, the title in the HTML
+- `webpage_text` : if the webpage is an online article, the main text
+- `webpage_lang` : if the webpage is an online article, the language recorded in the HTML
 
 ---
-
+# TODO: Expected Metadata
 - Tweet
 ```python
 "appearance": {
