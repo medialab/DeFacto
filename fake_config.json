@@ -1,0 +1,16 @@
+{
+    "endpoint": "URL",
+    "crowdtangle":{
+        "token": "XXXXX",
+        "rate_limit": 50
+    },
+    "twitter":{
+        "key": "XXXXX",
+        "secret_key": "XXXXX",
+        "token": "XXXXX-XXXXX",
+        "secret_token": "XXXXX"
+    },
+    "youtube":{
+        "key": "XXXXX"
+    }
+}
