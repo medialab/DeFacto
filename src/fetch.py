@@ -20,17 +20,21 @@ def formatted_fetch_result(fetch_result:MinetFetchResult):
         })
         if fetch_result.response:
             status = fetch_result.response.status
+            data.update({"status":status})
             encoded_html = fetch_result.response.data
             encoding = fetch_result.meta.get("encoding")
             if status == 200 and encoding and \
                 not any(domain == fetch_result.domain for domain in SOCIAL_MEDIA_PLATFORMS) and \
                     not any(fn(fetch_result.url) for fn in URAL_DOMAIN_FUNCTIONS):
-                html = encoded_html.decode(encoding)
-                soup = BeautifulSoup(html, features="lxml")
-                data.update({
-                    "webpage_title":soup.title.text,
-                    "webpage_text":trafilatura.extract(html),
-                    "webpage_lang":soup.html.get("lang")
-                })
+                    try: html = encoded_html.decode(encoding)
+                    except: html = encoded_html.decode(encoding, errors="ignore").encode("utf-8").decode("utf-8")
+                    soup = BeautifulSoup(html, features="lxml")
+                    if soup.title: data.update({"webpage_title":soup.title.text})
+                    try: data.update({"webpage_lang":soup.html.get("lang")})
+                    except: pass
+                    try:
+                        text = trafilatura.extract(html)
+                        data.update({"webpage_text":text})
+                    except: pass
 
     return index, row, list(data.values())
