@@ -1,7 +1,7 @@
 mem_1,mem_2,mem_3,mem_4,mem_5
-fake,news,fake news,réseaux,réseaux sociaux
-éducation,éducation médias,médias information,médias,information
-médias,indépendance,informations,indépendants,presse
-journalistes,médias,politiques,sans,sujets
-non,chaînes,information,médias,informations
-information,informations,réseaux,sociaux,réseaux sociaux
+journalistes,faire,presse,sources,éducation
+politiques,journalistes,opinions,experts,autres
+news,fake,fake news,réseaux,réseaux sociaux
+indépendance,public,presse,groupes,journalistes
+politique,experts,journalistes,arrêter,pouvoir
+réseaux,réseaux sociaux,sociaux,interdire,supprimer

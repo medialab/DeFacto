@@ -24,9 +24,9 @@ Customize the command with a maximum document frequency (`--max_df`, float), a m
 
 |cluster|mem_1|mem_2|mem_3|mem_4|mem_5|
 |-|-|-|-|-|-|
-1|fake|news|fake news|réseaux|réseaux sociaux
-2|éducation|éducation médias|médias information|médias|information
-3|médias|indépendance|informations|indépendants|presse
-4|journalistes|médias|politiques|sans|sujets
-5|non|chaînes|information|médias|informations
-6|information|informations|réseaux|sociaux|réseaux sociaux
+1|journalistes|faire|presse|sources|éducation
+2|politiques|journalistes|opinions|experts|autres
+3|news|fake|fake news|réseaux|réseaux sociaux
+4|indépendance|public|presse|groupes|journalistes
+5|politique|experts|journalistes|arrêter|pouvoir
+6|réseaux|réseaux sociaux|sociaux|interdire|supprimer
