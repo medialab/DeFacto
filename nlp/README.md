@@ -17,16 +17,16 @@ $ python simple_lda.py --num-topics 5 COLUMN DATAFILE
 # TF-IDF (customized)
 
 ```shell
-$ python tf_idf.py --max_df 0.4 --min_df 5 --clusters 6 --members 5 COLUMN DATAFILE
+$ python tf_idf.py --max_df 0.2 --min_df 5 --clusters 6 --members 5 COLUMN DATAFILE
 ```
 
 Customize the command with a maximum document frequency (`--max_df`, float), a minimum document frequency (`--min_df`, integer), a number of clusters (`--clusters`, integer), and the number of terms that compose a cluster (`--members`, integer).
 
 |cluster|mem_1|mem_2|mem_3|mem_4|mem_5|
 |-|-|-|-|-|-|
-1|journalistes|faire|presse|sources|éducation
-2|politiques|journalistes|opinions|experts|autres
+1|journalistes|presse|réseaux|sociaux|articles
+2|information|médias information|sources|éducation|créer
 3|news|fake|fake news|réseaux|réseaux sociaux
-4|indépendance|public|presse|groupes|journalistes
-5|politique|experts|journalistes|arrêter|pouvoir
-6|réseaux|réseaux sociaux|sociaux|interdire|supprimer
+4|informations|fausses|sites|sources|sans
+5|critique|esprit critique|esprit|développer|dès
+6|faire|information|éducation|éducation médias|jeunes
