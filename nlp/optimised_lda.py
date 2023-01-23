@@ -80,7 +80,7 @@ def main(datafile, column, num_topics):
 
     # -------------------------------------------------------
     # Visualize the LDA model's predictions
-    #visualize_topics(num_topics, lda_model, corpus, id2word, "optimised")
+    visualize_topics(num_topics, lda_model, corpus, id2word, "optimised")
 
 
 if __name__ == "__main__":
