@@ -16,17 +16,18 @@ $ python cloud.py COLUMN DATAFILE
 ```
 ![word cloud](wordcloud.png)
 
+
+# LDA (pre-processing v. 2)
+```shell
+$ python optimised_lda.py --num-topics 35 COLUMN DATAFILE
+```
+
 # LDA (pre-processing v. 1)
 Using `gensim`, make an LDA model that infers a certain number of topics (`num-topics`) in the data (`DATAFILE`). The function will deliver a dynamic visualization of the topic modeling using `pyLDAvis`. The visualization should automatically open a new tab in your default web browswer. However, you can open it yourself from the absolute file path printed in the console upon the script's conclusion.
 ```shell
 $ python simple_lda.py --num-topics 5 COLUMN DATAFILE
 ```
 ![dynamic LDA visualization in a web browswer](LDAvis_example.png)
-
-# LDA (pre-processing v. 2)
-```shell
-$ python optimised_lda.py --num-topics 35 COLUMN DATAFILE
-```
 
 # TF-IDF (customized)
 
