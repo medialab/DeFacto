@@ -67,16 +67,16 @@ def main(datafile, column, num_topics):
                                                 per_word_topics=True,
                                                 minimum_probability=0.10)
         
-        lda_model.save()
+        lda_model.save(model_file_name)
 
     # -------------------------------------------------------
     # See topics the model inferred
-    topics = lda_model.print_topics(num_words=4)
-    topic_index = {}
-    for topic_id, topic_terms in topics:
-        topic_index.update({topic_id:topic_terms.split('"')[1::2]})
+    cluster_topics = {}
+    for cluster in range(0, lda_model.num_topics-1):
+        topics = lda_model.print_topic(cluster).split('"')[1::2]
+        cluster_topics.update({cluster:topics})
     from pprint import pprint
-    pprint(topic_index)
+    pprint(cluster_topics)
 
     # -------------------------------------------------------
     # Visualize the LDA model's predictions
