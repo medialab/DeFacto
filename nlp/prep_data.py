@@ -25,7 +25,6 @@ def clean_propositions(file, column)-> list[list[str]]:
         # Count word frequencies
         for text in texts:
             for word in text:
-                print(word)
                 frequency[word] += 1
 
         # Only keep words that appear more than once
