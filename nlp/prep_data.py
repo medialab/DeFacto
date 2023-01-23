@@ -4,7 +4,7 @@ from collections import defaultdict
 
 stoplist = stopwords.words("french")
 ADDITIONAL_STOPWORDS = ["plus", "chaque", "tout", "tous", "toutes", "toute", "leur", "leurs", "comme", "afin", "pour"]
-PUNCTUATION = ["»", "«", "?", "!", ".", "%", ",", ".", "(", ")", ":", "’", "&", ";" '"']
+PUNCTUATION = ["»", "«", "?", "!", ".", "%", ",", ".", "(", ")", ":", "’", "&", ";" '"', "-"]
 
 
 def clean_propositions(file, column)-> list[list[str]]:
@@ -30,7 +30,7 @@ def clean_propositions(file, column)-> list[list[str]]:
         # Only keep words that appear more than once
         processed_corpus = [[token for token in text if frequency[token] > 1] for text in texts]
 
-        return processed_corpus
+        return texts
 
 
 def remove_punctuation(document):
