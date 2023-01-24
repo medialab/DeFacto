@@ -6,14 +6,14 @@ Tools to enrich De Facto's database
 ```shell
 $ python src/defacto.py request -c CONFIG.json -o PATH/TO/OUTFILE.csv
 ```
-In the folder `./data`, writes a CSV (`./data/df_urls.csv`) with columns for De Facto's ID (`id_column`) for each claim and the the claim's URL or None, if not presesnt, (`url_column`).
+Writes a CSV with columns for De Facto's ID (`id_column`) for each claim and the the claim's URL or None, if not presesnt, (`url_column`).
 
 # Step 2
 ## Fetch all URLs in list and parse main text from fetched HTML if an article.
 ```
 $ python src/fetch.py -u url_column -o PATH/TO/OUTFILE.csv PATH/TO/INFILE.csv
 ```
-In the folder `./cache`, writes a CSV (`./cache/fetch_results.csv`) with the original data file's columns as well as the following additional columns if the claim had a URL:
+Writes a CSV with the original data file's columns as well as the following additional columns if the in-file's row had a valid URL:
 - `domain` : domain name
 - `fetched_url` : the URL that Minet fetched to collect data
 - `normalized_url` : a normalized version of that URL
