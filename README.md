@@ -4,14 +4,14 @@ Tools to enrich De Facto's database
 # Step 1
 ## Flatten relevant data from De Facto's database into CSV
 ```shell
-$ python src/defacto.py request -c config.json
+$ python src/defacto.py request -c CONFIG.json -o PATH/TO/OUTFILE.csv
 ```
 In the folder `./data`, writes a CSV (`./data/df_urls.csv`) with columns for De Facto's ID (`id_column`) for each claim and the the claim's URL or None, if not presesnt, (`url_column`).
 
 # Step 2
 ## Fetch all URLs in list and parse main text from fetched HTML if an article.
 ```
-$ python src/main.py -u url_column data/df_urls.csv
+$ python src/fetch.py -u url_column -o PATH/TO/OUTFILE.csv PATH/TO/INFILE.csv
 ```
 In the folder `./cache`, writes a CSV (`./cache/fetch_results.csv`) with the original data file's columns as well as the following additional columns if the claim had a URL:
 - `domain` : domain name

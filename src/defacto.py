@@ -3,25 +3,27 @@ import os
 import sys
 
 import click
-from fs import JSONParams
+
+from utils import get_endpoint, manage_filepath, request_data
 
 data_dir = os.path.join(".", "data")
 
 
 @click.command
-@click.option("-c", "--config", required=False, type=click.Path(exists=True), nargs=1)
-def request(config):
+@click.option("-c", "config", required=False, type=click.Path(exists=True), nargs=1)
+@click.option("-o", "outfile", required=True, type=click.Path(exists=False), nargs=1)
+def request(config, outfile):
 
     # Verify the parameters
-    params = JSONParams(config)
+    endpoint = get_endpoint(config)
 
     # Download JSON response from database
-    data = params.request()
+    data = request_data(endpoint)
 
     # Parse URLs from the data and write to a temporary CSV file
-    if not os.path.isdir(data_dir): os.mkdir(data_dir)
-    temp_raw_file = os.path.join(data_dir, "df_urls.csv")
-    with open(temp_raw_file, "w", encoding="utf-8") as opened_outfile:
+    manage_filepath(outfile)
+
+    with open(outfile, "w", encoding="utf-8") as opened_outfile:
         fieldnames = ["id_column", "url_column"]
         writer = csv.DictWriter(opened_outfile, fieldnames=fieldnames)
         writer.writeheader()
@@ -32,12 +34,10 @@ def request(config):
 
 
 @click.command
-@click.option("-f", "--file", required=False, type=click.Path(exists=True), nargs=1)
-@click.option("-u", "--url-column", required=True, type=str, nargs=1)
-@click.option("-k", "--id-column", required=True, type=str, nargs=1)
-def output(file, url_column, id_column):
-
+@click.option("-f", "--file", required=True, type=click.Path(exists=True), nargs=1)
+def send_to_database(file):
     pass
+
 
 @click.group
 def cli() -> None:
@@ -47,5 +47,5 @@ def cli() -> None:
 if __name__ == "__main__":
     sys.tracebacklimit=0
     cli.add_command(request)
-    cli.add_command(output)
+    cli.add_command(send_to_database)
     cli()
