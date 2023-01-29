@@ -106,6 +106,13 @@ def main(datafile, column):
     fig.write_html(html_path, auto_open=True)
     fig.write_image(png_path)
 
+    title = 'barchart'
+    html_path = os.path.join(vis_directory, f"{title}.html")
+    png_path = os.path.join(vis_directory, f"{title}.png")
+    fig = topic_model.visualize_barchart(custom_labels=True, n_words=10, height=600, width=600)
+    fig.write_html(html_path, auto_open=True)
+    fig.write_image(png_path)
+
     # Write document info to out-file
     results = topic_model.get_document_info(docs=docs)
     results.to_csv()
