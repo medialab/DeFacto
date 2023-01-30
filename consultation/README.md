@@ -3,7 +3,7 @@
 ## Distribution des topics
 Label|Distribution|Mots clefs
 |--|--|--|
--1|491|sans - journalistes - médias
+-1|491|sans - journalistes - médias (à ignorer)
 0|320|école - jeunes - esprit critique
 1|210|financement - concentration médias - milliardaires
 2|160|sanctionner - pubs - arnaques
