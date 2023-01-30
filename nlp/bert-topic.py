@@ -13,7 +13,7 @@ from umap import UMAP
 TOKENIZERS_PARALLELISM=(True | False)
 MODEL_FILE_NAME = "bertopic.model"
 stoplist = stopwords.words("french")
-ADDITIONAL_STOPWORDS = ["plus", "chaque", "tout", "tous", "toutes", "toute", "leur", "leurs", "comme", "afin", "pour"]
+ADDITIONAL_STOPWORDS = ["plus", "chaque", "tout", "tous", "toutes", "toute", "leur", "leurs", "comme", "afin", "pendant", "lorsque"]
 
 
 def special_preprocessing(string):
@@ -36,19 +36,19 @@ def main(datafile, column):
 
     if not os.path.isfile(MODEL_FILE_NAME):
 
-        # Step 1 - Extract embeddings
+        # Step 1 - Extract embeddings (future: try training model following https://lajavaness.medium.com/sentence-embedding-fine-tuning-for-the-french-language-65e20b724e88)
         embedding_model = SentenceTransformer("dangvantuan/sentence-camembert-large")
         embeddings = embedding_model.encode(docs, show_progress_bar=True)
 
         # Step 2 - Reduce dimensionality
-        umap_model = UMAP(n_neighbors=15, n_components=5, min_dist=0.0, metric='cosine')
+        umap_model = UMAP(angular_rp_forest=True, metric='cosine', n_components=10, n_neighbors=30, min_dist=0.1)
 
         # Step 3 - Cluster reduced embeddings
-        hdbscan_model = HDBSCAN(min_cluster_size=15, metric='euclidean', cluster_selection_method='eom', prediction_data=True)
+        hdbscan_model = HDBSCAN(min_cluster_size=13, min_samples=3, prediction_data=True, metric='euclidean', cluster_selection_method='eom')
 
         # Step 4 - Tokenize topics
         stoplist.extend(ADDITIONAL_STOPWORDS)
-        vectorizer_model = CountVectorizer(stop_words=stoplist, ngram_range=(1, 2))
+        vectorizer_model = CountVectorizer(stop_words=stoplist, ngram_range=(1, 3))
 
         # Step 5 - Create topic representation
         ctfidf_model = ClassTfidfTransformer(reduce_frequent_words=True, bm25_weighting=True)
@@ -61,7 +61,7 @@ def main(datafile, column):
             vectorizer_model=vectorizer_model,
             ctfidf_model=ctfidf_model,
             diversity=0.5,
-            n_gram_range=(1,2),
+            n_gram_range=(1,3),
             nr_topics='auto',
         )
 
@@ -74,8 +74,8 @@ def main(datafile, column):
     topic_model = BERTopic.load(MODEL_FILE_NAME)
 
     topic_labels = topic_model.generate_topic_labels(nr_words=3,
-                                topic_prefix=False,
-                                separator=" | ")
+                                topic_prefix=True,
+                                separator=" - ")
 
     topic_model.set_topic_labels(topic_labels)
 
@@ -85,28 +85,28 @@ def main(datafile, column):
     # Generate visualizations
     vis_directory = 'bertopic_vis'
     if not os.path.isdir(vis_directory): os.mkdir(vis_directory)
-    title = 'documents'
+    title = 'documents2'
     html_path = os.path.join(vis_directory, f"{title}.html")
     png_path = os.path.join(vis_directory, f"{title}.png")
     fig = topic_model.visualize_documents(docs=docs, custom_labels=True)
     fig.write_html(html_path, auto_open=True)
     fig.write_image(png_path)
 
-    title = 'topics'
+    title = 'topics2'
     html_path = os.path.join(vis_directory, f"{title}.html")
     png_path = os.path.join(vis_directory, f"{title}.png")
     fig = topic_model.visualize_topics()
     fig.write_html(html_path, auto_open=True)
     fig.write_image(png_path)
 
-    title = 'hierarchy'
+    title = 'hierarchy2'
     html_path = os.path.join(vis_directory, f"{title}.html")
     png_path = os.path.join(vis_directory, f"{title}.png")
     fig = topic_model.visualize_hierarchy(custom_labels=True)
     fig.write_html(html_path, auto_open=True)
     fig.write_image(png_path)
 
-    title = 'barchart'
+    title = 'barchart2'
     html_path = os.path.join(vis_directory, f"{title}.html")
     png_path = os.path.join(vis_directory, f"{title}.png")
     fig = topic_model.visualize_barchart(custom_labels=True, n_words=10, height=600, width=600)
