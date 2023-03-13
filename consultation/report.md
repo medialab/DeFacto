@@ -49,6 +49,7 @@
 ## Décomposition des topics
 ![barchart](topic_visualisations/barchart.png)
 
+### Merger des topics
 Merger des topics ci-dessous et/ou proposer des nouveaux titres qui résume le topic.
 
 |numéro|représentation|merge|titre|
@@ -70,7 +71,6 @@ Merger des topics ci-dessous et/ou proposer des nouveaux titres qui résume le t
 |14|dès école maternelle  --  permettre enfants  --  psycho  --  éducation civique  --  éducation nationale||
 |15|analyser mieux  --  suivi  --  scientifiques  --  peut perdre  --  petit récapitulatif temps||
 |16|emploi temps élèves  --  élèves  --  donner moyens professeurs  --  documentalistes enseigner emi  --  enseignement emi professeurs||
-|||||
 
 ## Similarité entre topics
 ![hierarchy](topic_visualisations/hierarchy.png)
