@@ -51,10 +51,8 @@
 
 Merger des topics ci-dessous et/ou proposer des nouveaux titres qui résume le topic.
 
-|||||
-|--|--|--|--|
 |numéro|représentation|merge|titre|
-|||||
+|--|--|--|--|
 |0|financement  --  concentration médias  --  milliardaires  --  indépendants  --  indépendance médias||
 |1|fake news  --  vérifiée  --  qualité  --  plusieurs  --  sources information||
 |2|réseaux sociaux  --  éducation médias information  --  professeurs documentalistes  --  facebook  --  responsables||
