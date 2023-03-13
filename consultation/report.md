@@ -49,9 +49,30 @@
 ## Décomposition des topics
 ![barchart](topic_visualisations/barchart.png)
 
-|topic|merge|new title|
-|--|--|--|
-|||
+Merger des topics ci-dessous et/ou proposer des nouveaux titres qui résume le topic.
+
+|||||
+|--|--|--|--|
+|numéro|représentation|merge|titre|
+|||||
+|0|financement  --  concentration médias  --  milliardaires  --  indépendants  --  indépendance médias||
+|1|fake news  --  vérifiée  --  qualité  --  plusieurs  --  sources information||
+|2|réseaux sociaux  --  éducation médias information  --  professeurs documentalistes  --  facebook  --  responsables||
+|3|experts  --  opinion  --  différence entre  --  pensée  --  gauche
+|4|sujets  --  buzz  --  faits divers  --  jt  --  info||
+|5|analyser  --  école  --  apprendre  --  jeune âge  --  développer||
+|6|arrêtent  --  conditionnel  --  sans  --  être  --  essaient||
+|7|presse  --  acheter  --  rendre accessible  --  papier  --  gratuité||
+|8|continu  --  ue  --  chaînes information  --  belges  --  affranchir||
+|9|auteurs  --  financièrement  --  amendes  --  diffusant  --  élus||
+|10|éthique  --  charte munich  --  conseil déontologie  --  médecins  --  code déontologie||
+|11|anonymat réseaux sociaux  --  réseaux sociaux interdire  --  sociaux interdire  --  supprimer  --  vrai nom||
+|12|sanctionner youtube lorsqu  --  pubs arnaques  --  médias informations  --  influenceurs  --  pub institutionnelles dénoncer||
+|13|médias locaux  --  france  --  national européen laisser  --  nationales internationales publier  --  niveau local retrouver||
+|14|dès école maternelle  --  permettre enfants  --  psycho  --  éducation civique  --  éducation nationale||
+|15|analyser mieux  --  suivi  --  scientifiques  --  peut perdre  --  petit récapitulatif temps||
+|16|emploi temps élèves  --  élèves  --  donner moyens professeurs  --  documentalistes enseigner emi  --  enseignement emi professeurs||
+|||||
 
 ## Similarité entre topics
 ![hierarchy](topic_visualisations/hierarchy.png)
