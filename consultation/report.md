@@ -43,13 +43,13 @@
 # Analyse de réseau
 
 ## Accord entre propositions par topic de la proposition
-![topic_network](gephi/topics.png)
-![topic_legend](gephi/topics_legend.png)
+[<img src="gephi/topics.png" width="480"/>](gephi/topics.png)
+[<img src="gephi/topics_legend.png" width="120"/>](gephi/topics_legend.png)
 
 ## Accord entre propositions par l'âge de l'auteur de la proposition
-![age_range_network](gephi/age_range.png)
-![age_range_legend](gephi/age_range_legend.png)
+[<img src="gephi/age_range.png" width="480"/>](gephi/age_range.png)
+[<img src="gephi/age_range_legend.png" width="120"/>](gephi/age_range_legend.png)
 
 ## Accord entre proposition par la génération de l'auteur de la proposition
-![generation_network](gephi/generation_of_author.png)
-![generation_legend](gephi/generation_of_author_legend.png)
+[<img src="gephi/generation_of_author.png" width="480"/>](gephi/generation_of_author.png)
+[<img src="gephi/generation_of_author_legend.png" width="120"/>](gephi/generation_of_author_legend.png)
