@@ -42,14 +42,14 @@
 
 # Analyse de réseau
 
-## Distribution des accords par topic
+## Accord entre propositions par topic de la proposition
 ![topic_network](gephi/topics.png)
 ![topic_legend](gephi/topics_legend.png)
 
-## Distribution des accords par âge
+## Accord entre propositions par l'âge de l'auteur de la proposition
 ![age_range_network](gephi/age_range.png)
 ![age_range_legend](gephi/age_range_legend.png)
 
-## Distribution des accords par génération
+## Accord entre proposition par la génération de l'auteur de la proposition
 ![generation_network](gephi/generation_of_author.png)
 ![generation_legend](gephi/generation_of_author_legend.png)
