@@ -1,8 +1,8 @@
-# Analyse linguistique des propositions de la consultation
-## "Comment permettre à chacun de mieux s'informer"
+# Analyse de la consultation "Comment permettre à chacun de mieux s'informer"
 
 ### Contexte de la consultation
-- 1 723 propositions validées de la consultation
+L'équipe de Make.org a solicité des participants à faire deux tâches : (1) proposer une idée pour améliorer la manière par laquelle les gens s'informer, (2) voter pour ou contre les propositions des autres.
+- 1 723 propositions valides
 - début : 27/06/2022
 - fin : 31/10/2022
 
@@ -11,7 +11,7 @@
 La première question de recherche était de savoir quels sujets ont été invoqués dans les propositions écrites par les participants de la consultation. Pour répondre à cette question, on a fait l'analyse linguistique qui s'appelle _topic modeling_, dans laquelle on extrait les sujets (topics) invoqués dans plusieurs documents de texte. La méthode qu'on a préféré est [`BERTopic`](https://maartengr.github.io/BERTopic/index.html).
 
 ## Propositions inférées par la consultation de Make.org
-La consultation a regroupé les propositions et créé des représentations de ces _clusters_. 15 _clusters_ ou topics ont été inférés par l'équipe de Make.org. Ils ont représenté chaque topic par une nouvelle proposition qui vise à résumer tous les propositions concernées.
+La consultation a regroupé les propositions et créé des représentations de ces _clusters_. 15 _clusters_ ou topics ont été inférés par l'équipe de Make.org. Ils ont représenté chaque topic par une nouvelle proposition qui vise à résumer toutes les propositions concernées.
 
 1. Encourager une approche critique de l'information
 2. Renforcer l'éducation aux médias et à l'information à l'école
