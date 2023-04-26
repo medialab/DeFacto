@@ -230,7 +230,7 @@ L'idée de législation (`Legislation`) se tient le plus aux propositions qui di
 La deuxième question de recherche s'appuie sur les votes qu'ont reçu les propositions.
 
 ## Accord entre propositions par topic de la proposition
-[<img src="topic_visualisations/agreement_clusters_with_topic_color.png" width="480"/>](topic_visualisations/agreement_clusters_with_topic_color.png)
+![topic_visualisations/agreement_clusters_with_topic_color.png](topic_visualisations/agreement_clusters_with_topic_color.png)
 
 ## Accord entre propositions par l'âge de l'auteur de la proposition
-[<img src="topic_visualisations/agreement_clusters_with_age_color.png" width="480"/>](topic_visualisations/agreement_clusters_with_age_color.png)
+![topic_visualisations/agreement_clusters_with_age_color.png](topic_visualisations/agreement_clusters_with_age_color.png)
