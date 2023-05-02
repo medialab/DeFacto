@@ -301,7 +301,7 @@ La deuxième question de recherche s'appuie sur les votes qu'ont reçu les propo
     </table>
 </div>
 
-[<img src="topic_visualisations/agreement_clusters_with_topic_color.png" width="480"/>](topic_visualisations/agreement_clusters_with_topic_color.png)
+![topic_visualisations/agreement_clusters_with_topic_color.png](topic_visualisations/agreement_clusters_with_topic_color.png)
 
 ## Accord entre propositions par l'âge de l'auteur de la proposition
 
@@ -322,4 +322,4 @@ La deuxième question de recherche s'appuie sur les votes qu'ont reçu les propo
     </table>
 </div>
 
-[<img src="topic_visualisations/agreement_clusters_with_age_color.png" width="480"/>](topic_visualisations/agreement_clusters_with_age_color.png)
+![topic_visualisations/agreement_clusters_with_age_color.png](topic_visualisations/agreement_clusters_with_age_color.png)
