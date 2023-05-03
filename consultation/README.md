@@ -250,7 +250,7 @@ L'idée de législation (`Legislation`) se tient le plus aux propositions qui di
 La deuxième question de recherche s'appuie sur les votes qu'ont reçu les propositions. Les données brutes de l'analyse de Make.org se composent d'un part les propositions et d'un autre part une matrice des votes sur les propositions. Le dernier met en binôme chaque proposition avec une autre proposition et montre comment les participants ont voté pour les deux.
 
 Exemple :
-|Proposition A|Proposition B|Vote de Proposition A|Vote de Proposition B|Nombre de votes de Proposition A|Nombre de votes de Proposition B|
+|Proposition A|Proposition B|Type de vote sur Proposition A|Type de vote sur Proposition B|Nombre de votes de ce type sur Proposition A|Compte total de votes sur Proposition A|
 |--|--|--|--|--|--|
 Il faut depuis l'école primaire...|Il faut des chaînes d’informations...|agree|disagree|9|41
 Il faut depuis l'école primaire...|Il faut des chaînes d’informations...|agree|agree|24|41
