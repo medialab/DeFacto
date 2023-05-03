@@ -251,7 +251,7 @@ La deuxième question de recherche s'appuie sur les votes qu'ont reçu les propo
 
 Par exemple, disons qu'on a une proposition qui discute de l'école primaire et une autre qui discute des chaînes d'informations. Quand un participant répond aux deux propositions, ses deux votes vont se trouvent dans l'un des cinq catégories possibles. Le participant peut voter pour la première proposition sur l'école primaire et contre la deuxième sur les chaînes d'informations. Le participant peut être d'accord avec les deux propositions. Il peut être d'accord avec la première mais neutre sur la deuxième. Il peut voter contre la premièr sur l'école primaire et voter pour la deuxième. Enfin, le participant peut ne pas avoir un avis sur la première proposition et être d'accord avec la deuxième. La matrice qu'a construite l'équipe de Make.org compte, pour chaque proposition, le nombre des votes qui se trouvent dans chacun de ces cinq catégories.
 
-|Proposition A|Proposition B|Type de vote sur Proposition A|Type de vote sur Proposition B|Nombre de votes de ce type sur Proposition A|Compte total de votes sur Proposition A|
+|Proposition A|Proposition B|Type de vote sur Proposition A|Type de vote sur Proposition B|Nombre de votes de ce type sur Proposition A|Somme de votes sur Proposition A quand le participant a aussi voté sur Proposition B|
 |--|--|--|--|--|--|
 Il faut depuis l'école primaire...|Il faut des chaînes d’informations...|agree|disagree|9|41
 Il faut depuis l'école primaire...|Il faut des chaînes d’informations...|agree|agree|24|41
