@@ -2,10 +2,10 @@
 ## "Comment permettre à chacun de mieux s'informer"
 
 ### Contexte de la consultation Make.org
-Dans le cadre du projet De Facto et a l'initiation de De Facto, CLEMI, SciencesPo, l'AFP, et XWiki SAS, l'organisation Make.org a été solicitée pour réaliser [une consultation](https://make.org/FR/consultation/mieux-sinformer/results) autour de la question de comment les français peuvent mieux s'informer. L'objectif de la consultation était de connaître quelles solutions et quels défis les français voient par rapport à la désinformation en ligne. L'organisation Make.org était en contacte avec 113 227 participants et elle a mené la consultation entre le 27 juin et le 31 octobre 2022. Parmi plus de cent mille participants, 2 023 solutions ont été proposées, et les participants ont contribué 526 858 votes sur la totalité des propositions, en votant pour, contre, ou neutre.
+Dans le cadre du projet De Facto et a l'initiation de De Facto, CLEMI, SciencesPo, l'AFP, et XWiki SAS, l'organisation Make.org a été solicitée pour réaliser [une consultation](https://make.org/FR/consultation/mieux-sinformer/results) autour de la question de comment les français peuvent mieux s'informer. L'objectif de la consultation était de connaître quelles solutions et quels défis les français voient par rapport à la désinformation en ligne. L'organisation Make.org était en contacte avec 113 227 participants et elle a mené la consultation entre 27 juin 2022 et 31 octobre 2022. Parmi plus de cent mille participants, 2 023 solutions ont été proposées, et les participants ont contribué 526 858 votes sur la totalité des propositions, en votant pour, contre, ou neutre.
 
 ### Contexte de l'analyse Make.org
-L'équipe de Make.org a mis en valeur sa consultation en réalisant une analyse linguistique et statistique. Contrairement à l'analyse du médialab, l'analyse de Make.org cherche à résumer les propositions qui rassemblaeint le plus d'accord parmi les participants. L'objectif de cette approche était de livrer une liste de propositions qui montrent la position majoritaire des français. Parmi les 2 023 propositions données par les participants, l'équipe de Make.org a en considéré 1 723 valides au regard de sa charte de modération, et les a gardé pour l'analyse. En respectant l'objectif de montrer la position majoritaire, l'équipe de Make.org a ensuite séléctionné 1 063 propositions dont au moins 70% des votes sur la proposition était en faveur. Avec cet échantillon, l'équipe a fait sortir de la consultation 15 idées prioritaires qui résument les positions les plus souvent prises par les français par rapport à la question de comment mieux s'informer face à la désinformation en ligne.
+L'équipe de Make.org a mis en valeur sa consultation en réalisant une analyse linguistique et statistique des résultats. Contrairement à l'analyse du médialab, l'analyse de Make.org cherche à résumer les propositions qui rassemblaient le plus d'accord parmi les participants. L'objectif de cette approche était de livrer une liste de propositions qui montrent la position majoritaire des français. Parmi les 2 023 propositions données par les participants, l'équipe de Make.org a en considéré 1 723 valides au regard de sa charte de modération, et les a gardé pour l'analyse. En respectant l'objectif de montrer la position majoritaire, l'équipe de Make.org a ensuite séléctionné 1 063 propositions dont au moins 70% des votes sur la proposition était en faveur. Avec cet échantillon, l'équipe a fait sortir de la consultation 15 idées prioritaires qui résument les positions les plus souvent prises par les français par rapport à la question de comment mieux s'informer face à la désinformation en ligne.
 
 ### L'analyse par le médialab
 Ayant reçu les résultats de l'analyse de la consultation, le médialab cherche à valoriser les données brutes de l'analyse en se posant d'autres questions de recherche que celle qui a principalement mené l'analyse de Make.org. Dans un premier temps, le médialab a fait une analyse linguistique sur les sujet discutés dans toutes les 1 723 propositions valides, sans regard pour la position prise dans la discussion. L'objectif de cette approche était de savoir quels soucis étaient derrière les idées proposées, même si les solutions se différent ou échouent de maintenir un fort soutient. Dans un deuxième temps, le médialab a fait une analyse de réseau pour savoir si certains sujets ont réuni l'accord de certain regroupements de participants.
@@ -18,30 +18,30 @@ La première question de recherche était de savoir quels sujets ont été invoq
 ## Idées inférées par la consultation de Make.org
 Parmi les propositions favorables séléctionnées par l'équipe de Make.org, leur analyse a inféré 15 idées qui ensemble résument les positions majoritaires des participants.
 
-1. Encourager une approche critique de l'information
-2. Renforcer l'éducation aux médias et à l'information à l'école
-3. Former à la détection des fake news et à la vérification de l'information
-4. Assurer l'indépendance éditoriale des médias
-5. Proposer une information plus diversifiée
-6. Réguler plus efficacement les réseaux sociaux
-7. Renforcer les pratiques de vérification de l'information
-8. Sanctionner la diffusion de fake news
-9. Sourcer et référencer autant que possible les information publiées
-10. ne pas céder à la culture de buzz et du sensationnel
-11. Lutter contre la concentration des médias
-12. Exiger davantage d'expertise dans le traitement de l'information
-13. Accroître la transparence sur le financement et les intérêts des médias
-14. Améliorer la protection des journalistes et des lanceurs d'alerte
-15. Mieux encadrer les publicités
+1. Encourager une approche critique de l'information.
+2. Renforcer l'éducation aux médias et à l'information à l'école.
+3. Former à la détection des fake news et à la vérification de l'information.
+4. Assurer l'indépendance éditoriale des médias.
+5. Proposer une information plus diversifiée.
+6. Réguler plus efficacement les réseaux sociaux.
+7. Renforcer les pratiques de vérification de l'information.
+8. Sanctionner la diffusion de fake news.
+9. Sourcer et référencer autant que possible les information publiées.
+10. ne pas céder à la culture de buzz et du sensationnel.
+11. Lutter contre la concentration des médias.
+12. Exiger davantage d'expertise dans le traitement de l'information.
+13. Accroître la transparence sur le financement et les intérêts des médias.
+14. Améliorer la protection des journalistes et des lanceurs d'alerte.
+15. Mieux encadrer les publicités.
 
 ## Topics inférés par l'analyse du médialab
 
-À la base d'une analyse _topic modeling_ est la transformation d'une chaîne de charactères en vecteur numérique, auquel on peut soumettre des algorithmes. Il y a plusieurs méthodes pour transformer ou "représenter" une phrase en vecteur ; on peut découper la phrase et représenter chaque mot par des nombres, ou on peut garder le contexte des mots en représentant chaque phrase par des nombres. Cette dernière technique, _sentence embedding_, est plus reconnue actuellement et est celle qu'on a préférée. Chaque phrase, quel que soit la longeur, se compose du même nombre de "dimensions" dans lesquelles se précisent les aspects uniques de la phrase. Les _embeddings_ nous permettent à prendre en compte le contexte des mots invoqués dans une phrase.
+À la base d'une analyse _topic modeling_ est la transformation d'une chaîne de caractères en vecteur numérique, auquel on peut soumettre des algorithmes. Il y a plusieurs méthodes pour transformer ou "représenter" une phrase en vecteur ; on peut découper la phrase et représenter chaque mot en chiffres, ou on peut garder le contexte des mots en représentant chaque phrase en chiffres. Cette dernière technique, _sentence embedding_, est plus reconnue actuellement et est celle qu'on a préférée. Chaque phrase, quel que soit la longeur, se compose du même nombre de "dimensions" dans lesquelles se précisent les aspects uniques de la phrase. Les _embeddings_ nous permettent à prendre en compte le contexte des mots invoqués dans une phrase.
 
 
-Afin de créer les _sentence embeddings_, on a profité d'un [_sentence transformer_](https://huggingface.co/dangvantuan/sentence-camembert-large) fine-tuné par le laboratoire français [La Javaness](https://www.lajavaness.com/) et basé sur le modèle linguistique français [CamemBERT](https://huggingface.co/camembert/camembert-large). Le modèle puissant CamemBERT est le modèle premier pour le français contemporain et a été développé par [Louis Martin, Benjamin Muller, Pedro Ortiz Suarez, Yoann Dupont, Laurent Romary, Éric Villemonte de la Clergerie, Djamé Seddah, et Benoît Sagot](https://camembert-model.fr/). Pourtant, un _sentence embedding_ a trop de dimension pour qu'un algorithme puisse bien l'analyser. Du coup, on a réduit la complexité de la représentation en utilisant UMAP (_Uniform Manifold Approximation and Projection for Dimension Reduction_). Ensuite, les _embeddings_ des propositions ont été regroupés par l'algorithme HDBSCAN (_Hierarchical Density-Based Spatial Clustering of Applications with Noise_).
+Afin de créer les _sentence embeddings_, on a profité d'un [_sentence transformer_](https://huggingface.co/dangvantuan/sentence-camembert-large) fine-tuné par le laboratoire français [La Javaness](https://www.lajavaness.com/) et basé sur le modèle linguistique français [CamemBERT](https://huggingface.co/camembert/camembert-large). Le modèle puissant CamemBERT est le modèle premier pour le français contemporain et a été développé par [Louis Martin, Benjamin Muller, Pedro Ortiz Suarez, Yoann Dupont, Laurent Romary, Éric Villemonte de la Clergerie, Djamé Seddah, et Benoît Sagot](https://camembert-model.fr/). Afin de s'adapter aux toutes les nuances d'une phrase, le _sentence embedding_ a forcement beaucoup de dimensions, pourtant il y en a trop pour qu'un algorithme puisse bien analyser la représentation. Du coup, on a réduit la complexité de la représentation en utilisant l'algorithme UMAP (_Uniform Manifold Approximation and Projection for Dimension Reduction_). Ensuite, les _embeddings_ des phrases ont été regroupés par l'algorithme HDBSCAN (_Hierarchical Density-Based Spatial Clustering of Applications with Noise_).
 
-Le dernier étape de notre approche était résumer ou donner un nom au clusters de phrases créés par l'algorithme HBDSCAN. Or on avait besoin d'encore transformer les mots et les phrases en vecteur afin de laisser un autre algorithme les analyser. Pour créér les représentations des topics, on a utilisé un autre _transformer_ que le _sentence transformer_ et une autre technique. Cette fois, on a utilisé le c-TF-IDF (_Class-based term frequency-inverse document frequency_), qui se base sur le _TfidfTransformer_ de scikit-learn. Pour terminer, on a relu les topics à la main. On en a mergé certains et leur tous donner un nom.
+Le dernier étape de notre approche était donner un nom au clusters de phrases créés par l'algorithme HBDSCAN. Or on avait besoin d'encore transformer les mots et les phrases en vecteur afin de laisser un autre algorithme les analyser. Pour créér les représentations des topics, on a utilisé un autre _transformer_ que le _sentence transformer_ et une autre technique. Cette fois, on a utilisé le c-TF-IDF (_Class-based term frequency-inverse document frequency_), qui se base sur le _TfidfTransformer_ de scikit-learn. Pour terminer, on a relu les topics à la main. On en a mergé certains et leur tous donner un nom compréhensif.
 
 ![barchart](topic_visualisations/barchart.png)
 
@@ -93,7 +93,7 @@ L'analyse du médialab a inféré 13 topic invoqués dans les 1 723 propositions
         - réseaux sociaux
         - éducation médias information
         - professeurs documentalistes
-        - alogirthmes
+        - algorithmes
         - responsables
         - fake
     - Des propositions représentatives:
@@ -220,8 +220,19 @@ L'analyse du médialab a inféré 13 topic invoqués dans les 1 723 propositions
 
 569 propositions ne se tiennent pas suffisament à aucun topic inféré.
 
+## Analyse de la distribution des topics
+Les algorithmes ont détecté et distingué trois sujets liés à l'éducation. Premièrement, au moins 16 propositions ont discuté la profession de l'enseignement et l'EMI (Éducation aux médias et à l'information) en particulier. Deuxièmement, au moins 85 propositions ont discuté l'education dans les écoles maternelles. Troisièmement, au moins 152 propositions ont discuté l'éducation des jeunes en général et spécifiquement dans les écoles secondaires. Au lieu de dire simplement que l'éducation s'inquiètent les participants pendant qu'ils répondent à la question de comment mieux s'informer, on peut dire que leurs soucis se concentrent surtout aux habitudes et aux compétences critiques des jeunes en secondaire, qui ne faisaient pas partie de la consultation dont l'âge moyen des participants était environ 50 ans.
+
+Le regroupement des propositions qu'on a appelé « Formation au secondaire » inclut des propositions qui ciblent explicitement l'éducation en secondaire et des propositions qui utilisent souvent les mots « fake » et « réseaux sociaux ». Pour faire le compairison, le regroupement qu'on a appelé « Formation au primaire » est bien plus optimiste. Par rapport au topic de l'éducation aux écoles secondaires, qui parlent des réseaux sociaux, des algorithmes, et du « fake news », le topic de l'éducuation aux écoles primaires parlent du développement, de l'âge, de l'esprit, et pas beaucoup sur les outils numériques qui diffusent le _fake news_ ni sur le _fake news_ lui-même. En d'autre termes, les deux topics inférés se distinquent par de l'un côté un focus sur la diffusion de la désinformation vers les jeunes par les réseaux sociaux et de l'autre côté le développement de l'esprit critique dès un jeune âge.
+
+Donné la déséquilibre entre la proportion de propositions concernées par l'éducation dans les écoles secondaires et celle dans les écoles primaries, il semble que les participants ont pensé bien plus fortement aux adolescents qu'aux enfants en se posant des questions sur la désinformation en ligne. De l'un côté, il se peut que ce biais relève une supposition répandue chez les participants que les adolescents sont, en général, plus en ligne que les enfants et donc plus exposés à la désinformation, et cette supposition a l'air d'être correcte puisque les enfants en maternelle sont moins en ligne par rapport aux jeunes au collège et lycée.
+
+De l'autre côté, il se peut que le biais chez les participants relève une deuxième supposition que les adolescents sont spécialement susceptibles à la désinformation en ligne par rapport à la population en général. Cette supposition, pourtant, n'est pas bien justifiée. Chercheuse sur le projet De Facto et doctorante au médialab, Manon Berriche a méné une enquête dans un collège pour examiner comment les adolescents recoivent et interprètent la désinformation en ligne. Elle a trouvé que les adolescents savent prêter attention au caractère d'une information en ligne et à sa factualité. Dans son enquête, Berriche a vu les jeunes participants réuissent souvent à l'identification de _fake news_. Par contre, quand les adolescents tombent sur du _fake news_ ou des rumeurs, leur décision d'en mettre en circulation ou pas dépend sur le contexte social. Berriche a trouvé que quand les participants étaient dans une espace privé ou quand ils se disposaient de l'anonymité, ils ont plus souvent partagé de la désinformation, surtout s'il permettrait de « renforcer leur socialbilité »[ˆ1].
+
+[ˆ1]:Berriche, M. (Forthcoming). Back to school. Do teenagers receive and share (false) information in all situations? _Les enjeux de l'information ou de la communication_.
+
 ## Analyse de la proximité entre topics
-Certains sujets invoqués dans les propositions sont liés à l'un et l'autre, tels que les deux qui discutent l'éducation des jeunes et celui qui discute l'enseignement. Un regroupement hiérarchique (_hierarchical clustering analysis_ ou HCA) montre la proximité entre les représentations des topics inférés. On a implementé la méthode Ward pour relever la proximité entre topics.
+Certains sujets invoqués dans les propositions sont liés à l'un et l'autre, tels que les deux qui discutent l'éducation des jeunes et celui qui discute l'enseignement. Un regroupement hiérarchique (_hierarchical clustering analysis_ ou HCA) montre la proximité entre les représentations des topics inférés par les algorithmes. On a implementé la méthode Ward pour relever la proximité entre topics.
 
 ![hierarchy](topic_visualisations/hierarchy.png)
 
@@ -232,11 +243,21 @@ La similarité cosinus est une autre méthode mathématique pour examiner les re
 
 ![heatmap](topic_visualisations/heatmap.png)
 
-L'idée de législation (`Legislation`) se tient le plus aux propositions qui discutent l'éducation en secondaire (`Formation au secondaire`). D'un dégré moins important, la législation (`Legislation`) est aussi liée aux discussions sur l'accès à l'information (`Accès à l'information`). Contrairement au regroupement hierarchique, l'analyse par la similarité cosinus suggère que la similarité entre les trois topics sur l'éducation n'est pas si forte. Selon cette dernière analyse, trois topics en particulier, l'éducation en secondaire (`Formation au secondaire`), l'accès à l'information (`Accès à l'information`), et la législation (`Legislation`), ont les relations les plus importantes.
+L'idée de législation (`Legislation`) se tient le plus aux propositions qui discutent l'éducation dans les écoles secondaires (`Formation au secondaire`). D'un dégré moins important, la législation (`Legislation`) est aussi liée aux discussions sur l'accès à l'information (`Accès à l'information`). Contrairement au regroupement hierarchique, l'analyse par la similarité cosinus suggère que la similarité entre les trois topics sur l'éducation n'est pas si forte. Selon cette dernière analyse, trois topics en particulier, l'éducation dans les écoles secondaires (`Formation au secondaire`), l'accès à l'information (`Accès à l'information`), et la législation (`Legislation`), ont les relations entre eux les plus importantes.
 
 # Question de recherche 2 : Analyse de la vote sur les propositions
 
-La deuxième question de recherche s'appuie sur les votes qu'ont reçu les propositions.
+La deuxième question de recherche s'appuie sur les votes qu'ont reçu les propositions. Les données brutes de l'analyse de Make.org se composent d'un part les propositions et d'un autre part une matrice des votes sur les propositions. Le dernier met en binôme chaque proposition avec une autre proposition et montre comment les participants ont voté pour les deux.
+
+Exemple :
+|Proposition A|Proposition B|Vote de Proposition A|Vote de Proposition B|Nombre de votes de Proposition A|Nombre de votes de Proposition B|
+|--|--|--|--|--|--|
+Il faut depuis l'école primaire...|Il faut des chaînes d’informations...|agree|disagree|9|41
+Il faut depuis l'école primaire...|Il faut des chaînes d’informations...|agree|agree|24|41
+Il faut depuis l'école primaire...|Il faut des chaînes d’informations...|agree|neutral|6|41
+Il faut depuis l'école primaire...|Il faut des chaînes d’informations...|disagree|agree|1|41
+Il faut depuis l'école primaire...|Il faut des chaînes d’informations...|neutral|agree|1|41
+
 
 ## Accord entre propositions par topic de la proposition
 
