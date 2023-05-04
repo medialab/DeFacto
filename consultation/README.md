@@ -2,21 +2,21 @@
 ## "Comment permettre à chacun de mieux s'informer"
 
 ### Contexte de la consultation Make.org
-Dans le cadre du projet De Facto et a l'initiation de De Facto, CLEMI, SciencesPo, l'AFP, et XWiki SAS, l'organisation Make.org a été solicitée pour réaliser [une consultation](https://make.org/FR/consultation/mieux-sinformer/results) autour de la question de comment les français peuvent mieux s'informer. L'objectif de la consultation était de connaître quelles solutions et quels défis les français voient par rapport à la désinformation en ligne. L'organisation Make.org était en contacte avec 113 227 participants et elle a mené la consultation entre 27 juin 2022 et 31 octobre 2022. Parmi plus de cent mille participants, 2 023 solutions ont été proposées, et les participants ont contribué 526 858 votes sur la totalité des propositions, en votant pour, contre, ou neutre.
+Dans le cadre du projet De Facto et a l'initiative du CLEMI, de Sciences Po, de l'AFP, et de XWiki SAS, l'organisation Make.org a été solicitée pour réaliser [une consultation citoyenne](https://make.org/FR/consultation/mieux-sinformer/results) autour de la question de comment les français peuvent mieux s'informer. L'objectif de la consultation était de connaître quelles solutions et quels défis les français imaginent face à l'essor de la désinformation en ligne. 113 227 participants ont ainsi participé à la consultation entre le 27 juin 2022 et le 31 octobre 2022. 2 023 propositions ont ainsi été formulées par les participants, et 526 858 votes ont été réalisés sur la totalité de celles-ci, en votant pour, contre, ou neutre.
 
 ### Contexte de l'analyse Make.org
-L'équipe de Make.org a mis en valeur sa consultation en réalisant une analyse linguistique et statistique des résultats. Contrairement à l'analyse du médialab, l'analyse de Make.org cherche à résumer les propositions qui rassemblaient le plus d'accord parmi les participants. L'objectif de cette approche était de livrer une liste de propositions qui montrent la position majoritaire des français. Parmi les 2 023 propositions données par les participants, l'équipe de Make.org a en considéré 1 723 valides au regard de sa charte de modération, et les a gardé pour l'analyse. En respectant l'objectif de montrer la position majoritaire, l'équipe de Make.org a ensuite séléctionné 1 063 propositions dont au moins 70% des votes sur la proposition était en faveur. Avec cet échantillon, l'équipe a fait sortir de la consultation 15 idées prioritaires qui résument les positions les plus souvent prises par les français par rapport à la question de comment mieux s'informer face à la désinformation en ligne.
+L'équipe de Make.org a analysé les résultats de cette consultation en réalisant une analyse linguistique et statistique des résultats. Contrairement à l'analyse du médialab proposée ci-dessous, l'analyse de Make.org a visé à résumer les propositions qui rassemblaient le plus d'accord parmi les participants. L'objectif de cette approche était de livrer une liste de propositions receuillant le plus large soutien. Parmi les 2 023 propositions données par les participants, l'équipe de Make.org en a ainsi considéré et analysé 1 723 valides au regard de sa charte de modération, puis a séléctionné 1 063 propositions pour lesquelles au moins 70% des votes étaient favorables. Avec cet échantillon, l'équipe a fait sortir de la consultation 15 idées prioritaires qui résument les positions les plus souvent soutenues par rapport à la question de comment mieux s'informer face à la désinformation en ligne.
 
 ### L'analyse par le médialab
-Ayant reçu les résultats de l'analyse de la consultation, le médialab cherche à valoriser les données brutes de l'analyse en se posant d'autres questions de recherche que celle qui a principalement mené l'analyse de Make.org. Dans un premier temps, le médialab a fait une analyse linguistique sur les sujet discutés dans toutes les 1 723 propositions valides, sans regard pour la position prise dans la discussion. L'objectif de cette approche était de savoir quels soucis étaient derrière les idées proposées, même si les solutions se différent ou échouent de maintenir un fort soutient. Dans un deuxième temps, le médialab a fait une analyse de réseau pour savoir si certains sujets ont réuni l'accord de certain regroupements de participants.
+Ayant reçu les résultats de l'analyse de la consultation, le médialab cherche à valoriser les données brutes de l'analyse en se posant d'autres questions de recherche que celle qui a guidé l'analyse de Make.org. Dans un premier temps, le médialab a produit une analyse linguistique sur les sujet discutés parmi les 1 723 propositions valides, sans chercher à prendre en compte le sens des votes correspondants. L'objectif de cette approche était d'identifier les préoccupations des participants derrière les idées proposées, quel que soit le soutien qu'elles aient pu recevoir. Dans un deuxième temps, le médialab a réalisé une analyse de réseau centrée sur le soutien ou rejet par de mêmes participants en vue d'étudier si des regroupements de participants se formaient autour de certains sujets.
 
 
-# Question de recheche 1 : Sujets invoqués dans les propositions
+# Question de recherche 1 : Sujets invoqués dans les propositions
 
-La première question de recherche était de savoir quels sujets ont été invoqués dans les propositions données et votées par les participants de la consultation. Pour répondre à cette question, on a fait l'analyse linguistique qui s'appelle _topic modeling_, dans laquelle on extrait les sujets (topics) invoqués dans plusieurs documents de texte. La méthode qu'on a préféré est [`BERTopic`](https://maartengr.github.io/BERTopic/index.html).
+La première question de recherche était de savoir quels étaient les thématiques invoquées dans les propositions formulées et votées par les participants à la consultation. Pour répondre à cette question, nous avons réalisé une analyse linguistique de type _topic modeling_, dans laquelle on extrait des sujets (topics) au sein d'un corpus de textes. La méthode que nous avons préféré employer est [`BERTopic`](https://maartengr.github.io/BERTopic/index.html).
 
 ## Idées inférées par la consultation de Make.org
-Parmi les propositions favorables séléctionnées par l'équipe de Make.org, leur analyse a inféré 15 idées qui ensemble résument les positions majoritaires des participants.
+Parmi les propositions favorables séléctionnées par l'équipe de Make.org, leur analyse a inféré 15 idées résumant les positions majoritaires des participants :
 
 1. Encourager une approche critique de l'information.
 2. Renforcer l'éducation aux médias et à l'information à l'école.
@@ -27,7 +27,7 @@ Parmi les propositions favorables séléctionnées par l'équipe de Make.org, le
 7. Renforcer les pratiques de vérification de l'information.
 8. Sanctionner la diffusion de fake news.
 9. Sourcer et référencer autant que possible les information publiées.
-10. ne pas céder à la culture de buzz et du sensationnel.
+10. Ne pas céder à la culture de buzz et du sensationnel.
 11. Lutter contre la concentration des médias.
 12. Exiger davantage d'expertise dans le traitement de l'information.
 13. Accroître la transparence sur le financement et les intérêts des médias.
@@ -36,189 +36,189 @@ Parmi les propositions favorables séléctionnées par l'équipe de Make.org, le
 
 ## Topics inférés par l'analyse du médialab
 
-À la base d'une analyse _topic modeling_ est la transformation d'une chaîne de caractères en vecteur numérique, auquel on peut soumettre des algorithmes. Il y a plusieurs méthodes pour transformer ou "représenter" une phrase en vecteur ; on peut découper la phrase et représenter chaque mot en chiffres, ou on peut garder le contexte des mots en représentant chaque phrase en chiffres. Cette dernière technique, _sentence embedding_, est plus reconnue actuellement et est celle qu'on a préférée. Chaque phrase, quel que soit la longeur, se compose du même nombre de "dimensions" dans lesquelles se précisent les aspects uniques de la phrase. Les _embeddings_ nous permettent à prendre en compte le contexte des mots invoqués dans une phrase.
+La base d'une analyse _topic modeling_ consiste à transformer une chaîne de caractères en vecteur numérique, auquel on peut soumettre des algorithmes. Il existe différentes méthodes pour transformer ou "représenter" une phrase en vecteur ; on peut découper la phrase et représenter chaque mot en nombres, ou on peut garder le contexte des mots en représentant chaque phrase en nombres. Cette dernière technique, _sentence embedding_, est plus reconnue actuellement et est celle que nous avons préférée. Chaque phrase, quelle que soit sa longeur, se compose du même nombre de "dimensions" au travers desquelles se caractérisent les aspects uniques de la phrase. Les _embeddings_ nous permettent de prendre en compte le contexte des mots invoqués dans une phrase.
 
 
-Afin de créer les _sentence embeddings_, on a profité d'un [_sentence transformer_](https://huggingface.co/dangvantuan/sentence-camembert-large) fine-tuné par le laboratoire français [La Javaness](https://www.lajavaness.com/) et basé sur le modèle linguistique français [CamemBERT](https://huggingface.co/camembert/camembert-large). Le modèle puissant CamemBERT est le modèle premier pour le français contemporain et a été développé par [Louis Martin, Benjamin Muller, Pedro Ortiz Suarez, Yoann Dupont, Laurent Romary, Éric Villemonte de la Clergerie, Djamé Seddah, et Benoît Sagot](https://camembert-model.fr/). Afin de s'adapter aux toutes les nuances d'une phrase, le _sentence embedding_ a forcement beaucoup de dimensions, pourtant il y en a trop pour qu'un algorithme puisse bien analyser la représentation. Du coup, on a réduit la complexité de la représentation en utilisant l'algorithme UMAP (_Uniform Manifold Approximation and Projection for Dimension Reduction_). Ensuite, les _embeddings_ des phrases ont été regroupés par l'algorithme HDBSCAN (_Hierarchical Density-Based Spatial Clustering of Applications with Noise_).
+Afin de créer les _sentence embeddings_, nous avons exploité un [_sentence transformer_](https://huggingface.co/dangvantuan/sentence-camembert-large) fine-tuné par le laboratoire français [La Javaness](https://www.lajavaness.com/) et basé sur le modèle linguistique français [CamemBERT](https://huggingface.co/camembert/camembert-large). Le modèle CamemBERT est le principal modèle existant pour le français contemporain et a été développé par [Louis Martin, Benjamin Muller, Pedro Ortiz Suarez, Yoann Dupont, Laurent Romary, Éric Villemonte de la Clergerie, Djamé Seddah et Benoît Sagot](https://camembert-model.fr/). Afin de s'adapter à toutes les nuances d'une phrase, le _sentence embedding_ a forcement beaucoup de dimensions, pourtant il y en a trop pour qu'un algorithme puisse bien analyser la représentation. Nous avons donc réduit la complexité de la représentation en utilisant l'algorithme UMAP (_Uniform Manifold Approximation and Projection for Dimension Reduction_). Ensuite, les _embeddings_ des phrases ont été regroupés par l'algorithme HDBSCAN (_Hierarchical Density-Based Spatial Clustering of Applications with Noise_).
 
-Le dernier étape de notre approche était donner un nom au clusters de phrases créés par l'algorithme HBDSCAN. Or on avait besoin d'encore transformer les mots et les phrases en vecteur afin de laisser un autre algorithme les analyser. Pour créér les représentations des topics, on a utilisé un autre _transformer_ que le _sentence transformer_ et une autre technique. Cette fois, on a utilisé le c-TF-IDF (_Class-based term frequency-inverse document frequency_), qui se base sur le _TfidfTransformer_ de scikit-learn. Pour terminer, on a relu les topics à la main. On en a mergé certains et leur tous donner un nom compréhensif.
+Là dernière étape de notre approche consistait à donner un nom aux clusters de phrases créés par l'algorithme HBDSCAN. Pour créér les représentations des topics, nous avons utilisé un autre _transformer_ que le _sentence transformer_ : le c-TF-IDF (_Class-based term frequency-inverse document frequency_), qui se base sur le _TfidfTransformer_ de scikit-learn. Pour terminer, nous avons relu les topics à la main, fusionné certains entre eux, puis donné à chacun un nom compréhensif.
 
 ![barchart](topic_visualisations/barchart.png)
 
-L'analyse du médialab a inféré 13 topic invoqués dans les 1 723 propositions valides de la consultation.
+L'analyse du médialab a ainsi inféré 13 topics invoqués dans les 1 723 propositions valides de la consultation.
 
 1. L'opinion et le journalisme
     - Invoqué dans 263 propositions.
-    - Les mots ou les phrases les plus représentatifs:
+    - Les mots ou les phrases les plus représentatifs :
         - journalistes
         - politiques
         - sujets
         - débats
         - arrêtent
         - opinion
-    - Des propositions représentatives:
+    - Des propositions représentatives :
         - Il faut que les journalistes des médias, télévisions, radios arrêtent de donner leur avis en permanence.
         - Il faut que les journalistes se drapent d'humilité et arrêtent de voir dans le journalisme un métier d'ambitions personnelles.
         - Il faut organiser la mise en débat publique des idées sur des temps assez longs pour permettre aux contradicteurs d'argumenter leur position
 
-2. Financement et l'indépendance des médias
+2. Financement et indépendance des médias
     - Invoqué dans 210 propositions.
-    - Les mots ou les phrases les plus représentatifs:
+    - Les mots ou les phrases les plus représentatifs :
         - financement
         - concentration médias
         - milliardaires
         - interdire
         - grands groupes
         - médias indépendants
-    - Des propositions représentatives:
+    - Des propositions représentatives :
         - Il faut que les médias soient financés en partie par les finances publiques et en partie par le secteur privé, mais en toute transparence.
         - Il faut que la loi empêche l'achat de médias par une ou plusieurs personnes. L'information n'est pas une marchandise.
         - Il faut que les médias français ne soit plus possédé par 8 milliardaires qui protègent leurs intérêts
 3. Désinformation
     - Invoqué dans 178 propositions.
-    - Les mots ou les phrases les plus représentatifs:
+    - Les mots ou les phrases les plus représentatifs :
         - fake news
         - vérifiée
         - qualité
         - plusieurs
         - sources information
         - citer
-    - Des propositions représentatives:
+    - Des propositions représentatives :
         - Il faut que chaque publication cite obligatoirement ses sources.
         - Il faut former un organisme de débunk de fake news de qualité et forcer les algorithmes de recommandations à largement partager leur travail.
         - Il faut des experts en désamorçage de fake news, reconnus et crédibles.
 4. Formation au secondaire
     - Invoqué dans 152 propositions.
-    - Les mots ou les phrases les plus représentatifs:
+    - Les mots ou les phrases les plus représentatifs :
         - réseaux sociaux
         - éducation médias information
         - professeurs documentalistes
         - algorithmes
         - responsables
         - fake
-    - Des propositions représentatives:
+    - Des propositions représentatives :
         - Il faut faire de l'éducation aux médias et à l'information, une grande cause nationale.
         - Il faut que l'école explique le fonctionnement des réseaux sociaux à chaque enfant pour qu'ils comprennent la perversité des mécanismes.
         - Il faut créer une discipline d'information-documentation dispensée par les professeurs documentalistes pour tous les élèves du secondaire.
 5. Formation au primaire
     - Invoqué dans 85 propositions.
-    - Les mots ou les phrases les plus représentatifs:
+    - Les mots ou les phrases les plus représentatifs :
         - esprit
         - développer
         - développer esprit critique
         - analyser
         - âge
         - dès jeune âge
-    - Des propositions représentatives:
+    - Des propositions représentatives :
         - Il faut généraliser depuis l'école primaire un apprentissage de l'esprit critique.
         - Il faut apprendre très tôt, à développer son esprit critique. Cours ludiques et dédiés.
         - Il faut développer et renforcer les compétences psycho-sociales dès l'école maternelle, et ce, jusqu'à l'âge adulte.
 6. Accès à l'information
     - Invoqué dans 51 propositions.
-    - Les mots ou les phrases les plus représentatifs:
+    - Les mots ou les phrases les plus représentatifs :
         - rendre accessible
         - papier
         - abonnements gratuits
         - beaucoup
         - établissements scolaires
         - démocratiser
-    - Des propositions représentatives:
+    - Des propositions représentatives :
         - Il faut faciliter l'accès financier aux médias sous forme numérique. Ils sont trop chers.
         - Il faut voir comment fournir une offre d'informations de qualité à un prix accessible aux plus pauvres.
         - Il faut permettre un abonnement en ligne à un panel de titres de presse d'information avec une ristourne pour les étudiants, chômeurs etc.
 7. Chaînes d'information en continu
     - Invoqué dans 47 propositions.
-    - Les mots ou les phrases les plus représentatifs:
+    - Les mots ou les phrases les plus représentatifs :
         - europe
         - chaînes information continu
         - france télévision
         - créer chaîne
         - affranchir
         - quota
-    - Des propositions représentatives:
+    - Des propositions représentatives :
         - Il faut limiter les chaines d'info en boucle sources de conditionnement et favoriser, par un financement public, celles qui font réfléchir.
         - Il faut des chaînes d’informations indépendantes à la télévision, et libres de paroles.
         - Il faut que les chaînes d’information en continu soient supprimées pour arrêter la pratique du vide.
 8. Législation
     - Invoqué dans 46 propositions.
-    - Les mots ou les phrases les plus représentatifs:
+    - Les mots ou les phrases les plus représentatifs :
         - news
         - propos
         - diffusant
         - élus
         - sanctionner médias
         - pénalement
-    - Des propositions représentatives:
+    - Des propositions représentatives :
         - Il faut sanctionner les médias qui diffusent trop de fake news : retrait licence journalisme, suspension d’audience, déconnexion du site web.
         - Il faut que les auteurs de fake News soient sanctionnés pénalement et financièrement.
         - Il faut punir financièrement et fortement les auteurs de fausses info ainsi que les médias, supports, plateformes etc.... qui les diffusent.
 9. Éthique du journalisme
     - Invoqué dans 45 propositions.
-    - Les mots ou les phrases les plus représentatifs:
+    - Les mots ou les phrases les plus représentatifs :
         - éthique
         - charte munique
         - déontologie journalistique
         - respect
         - professionnelle
         - conseil
-    - Des propositions représentatives:
+    - Des propositions représentatives :
         - Il faut inclure dans toutes les formations dédiées, un code de déontologie, voire un serment, à l'image des médecins (Hippocrate).
         - Il faut créer un organisme indépendant pour contrôler le travail des médias et le respect de l’éthique journalistique.
         - Il faut transformer le « Conseil de déontologie des médias » créé en 2019 en véritable contre-pouvoir citoyen.
 10. Désanonymisation en ligne
     - Invoqué dans 24 propositions.
-    - Les mots ou les phrases les plus représentatifs:
+    - Les mots ou les phrases les plus représentatifs :
         - anonymat réseaux sociaux
         - réseaux sociaux interdir
         - sociaux interdire
         - supprimer
         - vrai nom
         - internet
-    - Des propositions représentatives:
+    - Des propositions représentatives :
         - Il faut protéger les utilisateurs d’Internet et des réseaux sociaux contre toute atteinte résultant de l’utilisation de leurs données.
         - Il faut supprimer l'anonymat sur les réseaux sociaux.
         - Il faut interdire les réseaux sociaux ou obliger de donner sa véritable identité pour poster.
 11. Arnaques et influenceurs
     - Invoqué dans 20 propositions.
-    - Les mots ou les phrases les plus représentatifs:
+    - Les mots ou les phrases les plus représentatifs :
         - sanctionner youtube lorqu
         - pubs arnaques
         - médias informations
         - influenceurs
         - pub institutinonelles dénoncer
         - moins respect victimes
-    - Des propositions représentatives:
+    - Des propositions représentatives :
         - Il faut responsabiliser les médias d'informations qui alertent sur les arnaques alors qu'ils laissent eux-mêmes ce type de pub sur leur site.
         - Il faut imposer aux médias de signaler les espaces publicitaires/ partenariats avec un symbole uniformisé clairement visible.
         - Il faut ne plus autoriser de publicité après des informations dramatiques, au moins par respect pour les victimes et leurs familles.
 12. Échelles des médias
     - Invoqué dans 17 propositions.
-    - Les mots ou les phrases les plus représentatifs:
+    - Les mots ou les phrases les plus représentatifs :
         - médias locaux
         - web
         - niveau local retrouver
         - nationales internationales publier
         - notoriété légitimté moins
         - national européen laisser
-    - Des propositions représentatives:
+    - Des propositions représentatives :
         - Il faut remettre en avant les médias (presse, site web, app...) pour s'informer sur les actualités locales.
         - Il faut remettre en avant l'actualité des territoires en diffusant plus facilement les actualités locales sur le web et dans les médias.
         - Il faut laisser aux chaines régionales et à la PQR le traitement de l'info du village et traiter plus souvent de l'international.
-13. Enseignment et l'EMI (Éducation aux médias et à l'information)
+13. Enseignment et EMI (Éducation aux médias et à l'information)
     - Invoqué dans 16 propositions.
-    - Les mots ou les phrases les plus représentatifs:
+    - Les mots ou les phrases les plus représentatifs :
         - emploi temps élèves
         - emi professeurs
         - élèves
         - donner moyens professeurs
         - enseignement emi
         - documentalistes enseigner emi
-    - Des propositions représentatives:
+    - Des propositions représentatives :
         - Il faut prévoir dans l'emploi du temps 1h par semaine pour que les professeurs documentalistes puissent former les élèves à l'EMI.
         - Il faut donner les moyens aux professeurs documentalistes d'exercer une véritable formation à l'EMI avec une progression du collège au lycée.
         - Il faut inscrire l'EMI dans l'emploi du temps des élèves de la 6e à la Terminale gérée par les profs docs dont c'est le domaine d'expertise.
 
-569 propositions ne se tiennent pas suffisament à aucun topic inféré.
+569 propositions ne se rattachent pas suffisamment à aucun des topics inférés.
 
 ## Analyse de la distribution des topics
 Les algorithmes ont détecté et distingué trois sujets liés à l'éducation. Premièrement, au moins 16 propositions ont discuté la profession de l'enseignement et l'EMI (Éducation aux médias et à l'information) en particulier. Deuxièmement, au moins 85 propositions ont discuté l'education dans les écoles maternelles. Troisièmement, au moins 152 propositions ont discuté l'éducation des jeunes en général et spécifiquement dans les écoles secondaires. Au lieu de dire simplement que l'éducation s'inquiètent les participants pendant qu'ils répondent à la question de comment mieux s'informer, on peut dire que leurs soucis se concentrent surtout aux habitudes et aux compétences critiques des jeunes en secondaire, qui ne faisaient pas partie de la consultation dont l'âge moyen des participants était environ 50 ans.
