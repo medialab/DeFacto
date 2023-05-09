@@ -300,6 +300,7 @@ Par exemple, disons qu'on a une proposition qui discute de l'école primaire et 
 </div>
 
 
+
 ## Accord entre propositions par topic de la proposition
 
 <div>
