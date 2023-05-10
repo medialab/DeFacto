@@ -43,7 +43,7 @@ Afin de créer les _sentence embeddings_, nous avons exploité un [_sentence tra
 
 Là dernière étape de notre approche consistait à donner un nom aux clusters de phrases créés par l'algorithme HBDSCAN. Pour créér les représentations des topics, nous avons utilisé un autre _transformer_ que le _sentence transformer_ : le c-TF-IDF (_Class-based term frequency-inverse document frequency_), qui se base sur le _TfidfTransformer_ de scikit-learn. Pour terminer, nous avons relu les topics à la main, fusionné certains entre eux, puis donné à chacun un nom compréhensif.
 
-![barchart](topic_visualisations/barchart.png)
+<img src="topic_visualisations/barchart.png" atl="Bar charts of 13 topics, showing the most representative tokens.">
 
 L'analyse du médialab a ainsi inféré 13 topics invoqués dans les 1 723 propositions valides de la consultation.
 
@@ -229,14 +229,14 @@ De l'autre côté, il se peut que le biais chez les participants relève une deu
 ## Analyse de la proximité entre topics
 Certains sujets invoqués dans les propositions sont liés à l'un et l'autre, tels que les deux qui discutent l'éducation des jeunes et celui qui discute l'enseignement. Un regroupement hiérarchique (_hierarchical clustering analysis_ ou HCA) montre la proximité entre les représentations des topics inférés par les algorithmes. On a implementé la méthode Ward pour relever la proximité entre topics.
 
-![hierarchy](topic_visualisations/hierarchy.png)
+<img src="topic_visualisations/hierarchy.png" alt="Hierarchical Clustering of 13 topics.">
 
 Comme attendu, le regroupement hiérarchique relève une proximité entre les trois sujets qui appartienent aux discussions de l'éducation : `Enseignement & L'EMI`, `Formation au secondaire`, `Formation au primaire`. Plus intéressante est la proximité que montre le regroupement hiérarchique entre la discussion de la désinformation (`Désinformation`) et la discussion de l'opinion dans le journalisme (`L'opinion & le journalisme`). En outre, la discussion sur la législation (`Legislation`) se lie à deux des sujets en particulier. Dans un premier temps, le regroupement hiérarchique trouve que la législation est liée aux soucis sur les arnaques et les influenceurs en ligne (`Arnaques & influenceurs`). Dans un deuxième temps, elle se lie aussi à la question de la désanoymisation en ligne (`Désanoymisation en ligne`).
 
 ## Analyse de la similarité entre topics
 La similarité cosinus est une autre méthode mathématique pour examiner les relations entre les représentations des topics inférés. Cette méthode prend les représentations de deux topics et détermine le cosinus de leur angle. En mettant ces calculations dans une matrice, où la similarité cosinus de chaque pair de représentation occupe un carré, des nouvelles relations ressortent.
 
-![heatmap](topic_visualisations/heatmap.png)
+<img src="topic_visualisations/heatmap.png" alt="Heat map showing the cosine similarity between topics.">
 
 L'idée de législation (`Legislation`), par exemple, se tient le plus aux propositions qui discutent l'éducation dans les écoles secondaires (`Formation au secondaire`). D'un dégré moins important, la législation (`Legislation`) est aussi liée aux discussions sur l'accès à l'information (`Accès à l'information`). Contrairement au regroupement hierarchique, l'analyse par la similarité cosinus suggère que la similarité entre les trois topics sur l'éducation n'est pas si forte. Selon cette dernière analyse, trois topics en particulier, l'éducation dans les écoles secondaires (`Formation au secondaire`), l'accès à l'information (`Accès à l'information`), et la législation (`Legislation`), ont les relations entre eux les plus importantes.
 
@@ -364,7 +364,9 @@ Par exemple, disons qu'on a une proposition qui discute de l'école primaire et 
     </table>
 </div>
 
-![topic_visualisations/agreement_clusters_with_topic_color.png](topic_visualisations/agreement_clusters_with_topic_color.png)
+<!-- <img src="topic_visualisations/agreement_clusters_with_topic_color.png" alt=""> -->
+
+<object type="text/html" data="topic_visualisations/agreement_clusters_with_topic_color.png"></object>
 
 ## Accord entre propositions par l'âge de l'auteur de la proposition
 
@@ -385,6 +387,6 @@ Par exemple, disons qu'on a une proposition qui discute de l'école primaire et 
     </table>
 </div>
 
-![topic_visualisations/agreement_clusters_with_age_color.png](topic_visualisations/agreement_clusters_with_age_color.png)
+<object type="text/html" data="topic_visualisations/agreement_clusters_with_age_color.html"></object>
 
-<p id="footnote-1">[1]Berriche, M. (Forthcoming). Back to school. Do teenagers receive and share (false) information in all situations? _Les enjeux de l'information ou de la communication_.</p>
+<p id="footnote-1">[1] Berriche, M. (Forthcoming). Back to school. Do teenagers receive and share (false) information in all situations? <em>Les enjeux de l'information ou de la communication</em>.</p>
